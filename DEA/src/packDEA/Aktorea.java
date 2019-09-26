@@ -1,4 +1,4 @@
-package packlab1;
+package packDEA;
 
 public class Aktorea {
 	private String izenAbizena;
@@ -10,7 +10,7 @@ public class Aktorea {
 	}
 	
 	private listaFilmak pelikulenLista(){ //Aktorearen pelikulen lista bueltatzen du
-		//TODO
+		return this.lista;
 	}
 	
 	public boolean izenBerdina(String pIzena) {  //Sartutako Stringa eta aktorearen izena berdinak diren konparatzen du
@@ -22,6 +22,6 @@ public class Aktorea {
 	}
 	
 	public boolean pelikulanParteHartu(Pelikula pPelikula) { //Aktorea sartutako pelikulan parte hartu duen ala ez adierazten du
-		return this.lista.pelikulaDago(pPelikula);
+		return this.lista.badago(pPelikula);
 	}
 }

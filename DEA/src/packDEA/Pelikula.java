@@ -1,4 +1,4 @@
-package packlab1;
+package packDEA;
 
 public class Pelikula {
 	private String izenBurua;
