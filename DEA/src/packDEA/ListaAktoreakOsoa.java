@@ -37,10 +37,9 @@ public class ListaAktoreakOsoa {
 		catch(IOException e) {e.printStackTrace();}
 	}
 	
-	public void aktoreaGehitu(Aktorea pAktorea){ //Aktore bat listaAktore batean txertatzen du
-		if(!this.lista.contains(pAktorea)) {
-			this.lista.add(pAktorea);
-		}
+	public void aktoreaGehitu(String[] pAktorea){ //Aktore bat listaAktore batean txertatzen du
+		Aktorea a=new Aktorea(pAktorea);
+		this.lista.add(a);
 	}
 	
 	public void listaAktoreakSortu(){
