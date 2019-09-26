@@ -4,7 +4,7 @@ public class Aktorea {
 	private String izenAbizena;
 	private listaFilmak lista;
 	
-	private Aktorea(String pIzenAbizena){
+	public Aktorea(String pIzenAbizena){
 		this.izenAbizena=pIzenAbizena;
 		this.lista=this.pelikulenLista();
 	}

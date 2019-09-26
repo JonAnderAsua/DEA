@@ -22,7 +22,10 @@ public class ListaPelikulakOsoa {
 		
 		return nireListaPelikulakOsoa;
 	}
-	
+	public void gehituPelikula(String pString) {
+		Pelikula p= new Pelikula("pString");
+		this.lista.add(p);
+	}
 	
 
 }

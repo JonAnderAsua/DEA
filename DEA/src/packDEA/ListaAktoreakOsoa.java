@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+//import java.io.FileReader;
 import java.io.IOException;
 
 public class ListaAktoreakOsoa {
@@ -24,11 +25,14 @@ public class ListaAktoreakOsoa {
 	
 	public void cargarLista(String nomF){      
 		try {
-			Scanner entrada = new Scanner(new FileReader());      
+			Scanner entrada = new Scanner(new FileReader(nomF));      
 			String linea;     
 			while (entrada.hasNext()) {         
 				linea = entrada.nextLine();         
-				//	...      
+				String[]a=linea.split("\\s--->\\s");
+				String[]aktoreak=a[1].split("\\s&&&\\s");
+				ListaPelikulakOsoa.getNireListaPelikulakOsoa().gehituPelikula("a");
+				ListaAktoreakOsoa.getNireListaAktoreakOsoa().aktoreaGehitu(aktoreak);
 			}
 		entrada.close(); 
 		}
@@ -39,5 +43,9 @@ public class ListaAktoreakOsoa {
 		if(!this.lista.contains(pAktorea)) {
 			this.lista.add(pAktorea);
 		}
+	}
+	
+	public void listaAktoreakSortu(){
+		this.cargarLista("FilmActors20162017.txt");
 	}
 }

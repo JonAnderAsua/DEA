@@ -7,9 +7,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-//import java.rmi.RemoteException;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
 
 public class listaAktoreak {
 	private ArrayList<Aktorea> lista;
@@ -22,28 +19,15 @@ public class listaAktoreak {
 		return this.lista.iterator();
 	}
 	
-	public void cargarLista(String nomF){      
-		try {
-			Scanner entrada = new Scanner(new FileReader());      
-			String linea;     
-			while (entrada.hasNext()) {         
-				linea = entrada.nextLine();         
-				//	...      
-			}
-		entrada.close(); 
-		}
-		catch(IOException e) {e.printStackTrace();}
-	}
 	public void aktoreaKendu(Aktorea pAktorea){ //Aktore bat listaAktoretik kentzen du
 		if(this.lista.contains(pAktorea)) {
 			this.lista.remove(pAktorea);
 		}
 	}
 	
-	public void aktoreaGehitu(Aktorea pAktorea){ //Aktore bat listaAktore batean txertatzen du
-		if(!this.lista.contains(pAktorea)) {
-			this.lista.add(pAktorea);
-		}
+	public void aktoreaGehitu(String pIzena){ //Aktore bat listaAktore batean txertatzen du
+		Aktorea a=new Aktorea(pIzena);
+		this.lista.add(a);
 	}
 	
 	public listaFilmak aktorearenPelikulakBueltatu(Aktorea pAktorea) {  //Sartutako aktorearen pelikulak bueltatzen ditu
