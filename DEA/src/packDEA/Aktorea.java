@@ -15,7 +15,7 @@ public class Aktorea {
 	}
 	
 	public boolean izenBerdina(String pIzena) {  //Sartutako Stringa eta aktorearen izena berdinak diren konparatzen du
-		return (this.izenAbizena==pIzena);
+		return (this.izenAbizena.equals(pIzena));
 	}
 	
 	public listaFilmak listaBueltatu() { //Aktorearen filmak (listaFilmak) bueltatzen du
@@ -24,5 +24,9 @@ public class Aktorea {
 	
 	public boolean pelikulanParteHartu(Pelikula pPelikula) { //Aktorea sartutako pelikulan parte hartu duen ala ez adierazten du
 		return this.lista.badago(pPelikula);
+	}
+	
+	public String getIzena() {
+		return this.izenAbizena;
 	}
 }

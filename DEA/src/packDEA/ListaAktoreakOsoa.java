@@ -29,15 +29,15 @@ public class ListaAktoreakOsoa {
 				linea = entrada.nextLine();         
 				String[]a=linea.split("\\s--->\\s");
 				String[]aktoreak=a[1].split("\\s&&&\\s");
-				ListaPelikulakOsoa.getNireListaPelikulakOsoa().gehituPelikula("a");
-				ListaAktoreakOsoa.getNireListaAktoreakOsoa().aktoreaGehitu(aktoreak);
+				ListaPelikulakOsoa.getNireListaPelikulakOsoa().gehituPelikula(a[1]);
+				ListaAktoreakOsoa.getNireListaAktoreakOsoa().aktoreaGehitu(aktoreak[1]);
 			}
 		entrada.close(); 
 		}
 		catch(IOException e) {e.printStackTrace();}
 	}
 	
-	public void aktoreaGehitu(String[] pAktorea){ //Aktore bat listaAktore batean txertatzen du
+	public void aktoreaGehitu(String pAktorea){ //Aktore bat listaAktore batean txertatzen du
 		Aktorea a=new Aktorea(pAktorea);
 		this.lista.add(a);
 	}

@@ -27,7 +27,9 @@ public class listaAktoreak {
 	
 	public void aktoreaGehitu(String pIzena){ //Aktore bat listaAktore batean txertatzen du
 		Aktorea a=new Aktorea(pIzena);
-		this.lista.add(a);
+		if(!this.lista.contains(a)) {
+			this.lista.add(a);
+		}
 	}
 	
 	public listaFilmak aktorearenPelikulakBueltatu(Aktorea pAktorea) {  //Sartutako aktorearen pelikulak bueltatzen ditu
@@ -78,7 +80,7 @@ public class listaAktoreak {
 		while(itr.hasNext()){
 			a=itr.next();
 			if(a.pelikulanParteHartu(pPelikula)){
-				l.aktoreaGehitu(a);
+				l.aktoreaGehitu(a.getIzena());
 			}
 		}
 		return l;
