@@ -1,11 +1,5 @@
 package packDEA;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Scanner;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 
 public class ListaPelikulakOsoa {
 	private ArrayList<Pelikula> lista;
@@ -24,7 +18,9 @@ public class ListaPelikulakOsoa {
 	}
 	public void gehituPelikula(String pString) {
 		Pelikula p= new Pelikula("pString");
-		this.lista.add(p);
+		if(!this.lista.contains(p)){
+			this.lista.add(p);
+		}
 	}
 	
 

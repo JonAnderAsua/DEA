@@ -11,10 +11,6 @@ public class listaFilmak {
 		this.lista=new ArrayList<Pelikula>();
 	}
 	
-	private Iterator<Pelikula> getIteradorea(){
-		return this.lista.iterator();
-	}
-	
 	public boolean badago(Pelikula pPelikula) {
 		return this.lista.contains(pPelikula);
 	}
