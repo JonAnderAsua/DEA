@@ -1,9 +1,6 @@
 package packDEA;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -45,7 +42,7 @@ public class ListaAktoreakOsoa {
 		}
 	}
 	
-	public void listaAktoreakSortu(){
+	public void listaAktoreakSortu(){  //Pelikulen eta aktoreen fitxategia irakurtzen du
 		this.cargarLista("FilmActors20162017.txt");
 	}
 }
