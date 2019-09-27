@@ -39,7 +39,9 @@ public class ListaAktoreakOsoa {
 	
 	public void aktoreaGehitu(String pAktorea){ //Aktore bat listaAktore batean txertatzen du
 		Aktorea a=new Aktorea(pAktorea);
-		this.lista.add(a);
+		if(!this.lista.contains(a)) {
+			this.lista.add(a);
+		}
 	}
 	
 	public void listaAktoreakSortu(){
