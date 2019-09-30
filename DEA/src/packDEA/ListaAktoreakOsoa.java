@@ -3,13 +3,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
 
 public class ListaAktoreakOsoa {
-	private ArrayList<Aktorea> lista;
+	private HashMap<Integer,Aktorea> lista=null;
 	private static ListaAktoreakOsoa nireListaAktoreakOsoa;
 	
 	private ListaAktoreakOsoa() {
-		this.lista=new ArrayList<Aktorea>();
+		this.lista=new HashMap<Integer,Aktorea>();
 	}
 	
 	public static ListaAktoreakOsoa getNireListaAktoreakOsoa() {
@@ -36,9 +41,11 @@ public class ListaAktoreakOsoa {
 	}
 	
 	public void aktoreaGehitu(String pAktorea){ //Aktore bat listaAktore batean txertatzen du
+		int giltza=0;
 		Aktorea a=new Aktorea(pAktorea);
-		if(!this.lista.contains(a)) {
-			this.lista.add(a);
+		if (this.lista.containsKey(a)){
+			giltza=this.lista.get(a);
+			this.lista.put(giltza,a);
 		}
 	}
 	

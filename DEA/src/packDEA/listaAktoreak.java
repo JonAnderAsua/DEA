@@ -36,11 +36,11 @@ public class listaAktoreak {
 		return pAktorea.listaBueltatu();
 	}
 	
-	public void zerrendaOrdenatu(T[]taula){ //listaAktoreak ordenatzen du
-		quickSort(taula,0,taula.length-1);
+	public void zerrendaOrdenatu(listaAktoreak pLista){ //listaAktoreak ordenatzen du
+		quickSort(pLista,0,pLista.luzera()-1);
 	}
 	
-	private void quickSort(T[]taulaBat,int pHasiera, int pBukaera){
+	private void quickSort(listaAktoreak taulaBat,int pHasiera, int pBukaera){
 		if(pBukaera-pHasiera>0){
 			int indizeaZatiketa=zatiketa(taulaBat,pHasiera,pBukaera);
 			quickSort(taulaBat, pHasiera, indizeaZatiketa-1);
@@ -48,8 +48,8 @@ public class listaAktoreak {
 		}
 	}
 	
-	private int zatiketa(T[]taula,int pI,int pF){
-		T lag=taula[pI];
+	private int zatiketa(listaAktoreak taula,int pI,int pF){
+		Aktorea lag=taula[pI];
 		int ezker=pI;
 		int eskuin=pF;
 		while(ezker<eskuin){
@@ -67,8 +67,8 @@ public class listaAktoreak {
 		taula[eskuin]=lag;
 	}
 	
-	private void swap(T[] taula,int pOne, int pTwo) {
-		T temp=taula[pOne];
+	private void swap(listaAktoreak taula,int pOne, int pTwo) {
+		Aktorea temp=taula[pOne];
 		taula[pOne]=taula[pTwo];
 		taula[pTwo]=temp;
 	}
@@ -89,4 +89,7 @@ public class listaAktoreak {
 	public void zerrendaFitxategianGorde() { //listaAktorea fitxategi batean gordetzen du
 		//TODO
 	}
+	
+	private int luzera() {
+		return this.lista.size();	}
 }
