@@ -40,7 +40,7 @@ public class listaAktoreak {
 		quickSort(pLista,0,pLista.luzera()-1);
 	}
 	
-	private void quickSort(listaAktoreak taulaBat,int pHasiera, int pBukaera){
+	private void quickSort(listaAktoreak taulaBat[],int pHasiera, int pBukaera){
 		if(pBukaera-pHasiera>0){
 			int indizeaZatiketa=zatiketa(taulaBat,pHasiera,pBukaera);
 			quickSort(taulaBat, pHasiera, indizeaZatiketa-1);
@@ -48,7 +48,7 @@ public class listaAktoreak {
 		}
 	}
 	
-	private int zatiketa(listaAktoreak taula,int pI,int pF){
+	private int zatiketa(listaAktoreak[] taula,int pI,int pF){
 		Aktorea lag=taula[pI];
 		int ezker=pI;
 		int eskuin=pF;

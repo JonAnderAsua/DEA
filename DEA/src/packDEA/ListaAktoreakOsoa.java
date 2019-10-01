@@ -1,5 +1,7 @@
 package packDEA;
 import java.util.Scanner;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
@@ -47,5 +49,8 @@ public class ListaAktoreakOsoa {
 	
 	public void listaAktoreakSortu(){  //Pelikulen eta aktoreen fitxategia irakurtzen du
 		this.cargarLista("FilmActors20162017.txt");
+	}
+	public void ordenatu() {
+		SortedSet<Aktorea> valores = new TreeSet<>(map.values());
 	}
 }
