@@ -1,20 +1,17 @@
 package packDEA;
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 
 
 public class ListaAktoreakOsoa {
-	private HashMap<Integer,Aktorea> lista=null;
+	private HashMap<Integer,Aktorea> map=null;
+	private int giltza=0;
 	private static ListaAktoreakOsoa nireListaAktoreakOsoa;
 	
 	private ListaAktoreakOsoa() {
-		this.lista=new HashMap<Integer,Aktorea>();
+		this.map=new HashMap<Integer,Aktorea>();
 	}
 	
 	public static ListaAktoreakOsoa getNireListaAktoreakOsoa() {
@@ -41,12 +38,11 @@ public class ListaAktoreakOsoa {
 	}
 	
 	public void aktoreaGehitu(String pAktorea){ //Aktore bat listaAktore batean txertatzen du
-		int giltza=0;
 		Aktorea a=new Aktorea(pAktorea);
-		if (this.lista.containsKey(a)){
-			giltza=this.lista.get(a);
-			this.lista.put(giltza,a);
+		if (!this.map.containsKey(a)){
+			this.map.put(this.giltza,a);
 		}
+		this.giltza++;
 	}
 	
 	public void listaAktoreakSortu(){  //Pelikulen eta aktoreen fitxategia irakurtzen du
