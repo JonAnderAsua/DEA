@@ -38,7 +38,7 @@ public class listaAktoreak {
 		return pAktorea.listaBueltatu();
 	}
 	
-	public void zerrendaOrdenatu(listaAktoreak pLista){ //listaAktoreak ordenatzen du
+	public void zerrendaOrdenatu(listaAktoreak[] pLista){ //listaAktoreak ordenatzen du
 		quickSort(pLista,0,pLista.luzera()-1);
 	}
 	
