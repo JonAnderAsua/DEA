@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class listaAktoreak {
@@ -87,7 +89,16 @@ public class listaAktoreak {
 	}
 	
 	public void zerrendaFitxategianGorde() { //listaAktorea fitxategi batean gordetzen du
-		//TODO
+		String ruta = "~/DEA/listaAktoreak.txt";
+	    File f = new File(ruta);
+	    FileWriter fw = new FileWriter(f);
+	    BufferedWriter escritura = new BufferedWriter(fw);
+	    for(int i=0;i<lista.size();i++){
+	        escritura.write(lista.get(i));
+	        escritura.newLine();
+
+	    }
+	    escritura.close();
 	}
 	
 	private int luzera() {
