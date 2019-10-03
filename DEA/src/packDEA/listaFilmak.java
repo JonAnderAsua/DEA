@@ -12,6 +12,7 @@ public class listaFilmak {
 		this.lista=new ArrayList<Pelikula>();
 	}
 	
+	
 	public boolean badago(Pelikula pPelikula) {
 		return this.lista.contains(pPelikula);
 	}

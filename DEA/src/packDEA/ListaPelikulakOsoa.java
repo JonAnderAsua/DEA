@@ -1,12 +1,14 @@
 package packDEA;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ListaPelikulakOsoa {
-	private ArrayList<Pelikula> lista;
+	private HashMap<Integer,Pelikula> map=null;
+	private int giltza=0;
 	private static ListaPelikulakOsoa nireListaPelikulakOsoa=null;
 	
 	private ListaPelikulakOsoa() {
-		this.lista=new ArrayList<Pelikula>();
+		this.map=new HashMap<Integer,Pelikula>();
 	}
 	
 	public static ListaPelikulakOsoa getNireListaPelikulakOsoa() {
@@ -17,10 +19,19 @@ public class ListaPelikulakOsoa {
 		return nireListaPelikulakOsoa;
 	}
 	public void gehituPelikula(String pString) {
-		Pelikula p= new Pelikula("pString");
-		if(!this.lista.contains(p)){
-			this.lista.add(p);
+		Pelikula p=new Pelikula(pString);
+		if (!this.map.containsKey(p)){ //galdetu
+			this.map.put(this.giltza,p);
 		}
+		this.giltza++;
+	}
+	
+	public Pelikula pelikulaBilatu(Pelikula pPelikula) {
+		Pelikula emaitza=null;
+		if(map.containsKey(pPelikula)) {
+			emaitza=pPelikula;
+		}
+		return emaitza;
 	}
 	
 

@@ -41,16 +41,24 @@ public class ListaAktoreakOsoa {
 	
 	public void aktoreaGehitu(String pAktorea){ //Aktore bat listaAktore batean txertatzen du
 		Aktorea a=new Aktorea(pAktorea);
-		if (!this.map.containsKey(a)){
+		if (!this.map.containsKey(a)){ //galdetu
 			this.map.put(this.giltza,a);
 		}
 		this.giltza++;
+	}
+	
+	public Aktorea aktoreaBilatu(Aktorea pAktorea){
+		Aktorea emaitza=null;
+		if(this.map.containsKey(pAktorea)){
+			emaitza=pAktorea;
+		}
+		return emaitza;
 	}
 	
 	public void listaAktoreakSortu(){  //Pelikulen eta aktoreen fitxategia irakurtzen du
 		this.cargarLista("FilmActors20162017.txt");
 	}
 	public void ordenatu() {
-		SortedSet<Aktorea> valores = new TreeSet<>(map.values());
+		SortedSet<Aktorea> valores = new TreeSet<>(map.values()); //GALDETU
 	}
 }
