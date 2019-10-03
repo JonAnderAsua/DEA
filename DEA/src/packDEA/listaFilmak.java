@@ -18,6 +18,8 @@ public class listaFilmak {
 	}
 	
 	public void pelikulaGehitu(Pelikula pPelikula) {
-		
+		if(!this.lista.contains(pPelikula)) {
+			lista.add(pPelikula);
+		}
 	}
 }

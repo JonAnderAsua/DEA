@@ -100,7 +100,4 @@ public class listaAktoreak {
 	    }
 	    escritura.close();
 	}
-	
-	private int luzera() {
-		return this.lista.size();	}
 }

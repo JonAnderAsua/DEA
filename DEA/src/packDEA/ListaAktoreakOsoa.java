@@ -8,12 +8,12 @@ import java.util.HashMap;
 
 
 public class ListaAktoreakOsoa {
-	private HashMap<Integer,Aktorea> map=null;
+	private HashMap<String,Aktorea> map=null;
 	private int giltza=0;
 	private static ListaAktoreakOsoa nireListaAktoreakOsoa;
 	
 	private ListaAktoreakOsoa() {
-		this.map=new HashMap<Integer,Aktorea>();
+		this.map=new HashMap<String,Aktorea>();
 	}
 	
 	public static ListaAktoreakOsoa getNireListaAktoreakOsoa() {
@@ -42,9 +42,8 @@ public class ListaAktoreakOsoa {
 	public void aktoreaGehitu(String pAktorea){ //Aktore bat listaAktore batean txertatzen du
 		Aktorea a=new Aktorea(pAktorea);
 		if (!this.map.containsKey(a)){ //galdetu
-			this.map.put(this.giltza,a);
+			this.map.put(pAktorea,a);
 		}
-		this.giltza++;
 	}
 	
 	public Aktorea aktoreaBilatu(Aktorea pAktorea){
