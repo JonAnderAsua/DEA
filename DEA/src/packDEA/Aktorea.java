@@ -29,4 +29,8 @@ public class Aktorea {
 	public String getIzena() {
 		return this.izenAbizena;
 	}
+	
+	public void gehituPelikula(Pelikula pPelikula) {
+		this.lista.pelikulaGehitu(pPelikula);
+	}
 }

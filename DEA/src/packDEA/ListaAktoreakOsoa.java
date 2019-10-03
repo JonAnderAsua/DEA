@@ -31,19 +31,23 @@ public class ListaAktoreakOsoa {
 				linea = entrada.nextLine();         
 				String[]a=linea.split("\\s--->\\s");
 				String[]aktoreak=a[1].split("\\s&&&\\s");
-				ListaPelikulakOsoa.getNireListaPelikulakOsoa().gehituPelikula(a[1]);
-				ListaAktoreakOsoa.getNireListaAktoreakOsoa().aktoreaGehitu(aktoreak[1]);
+				Pelikula peli=ListaPelikulakOsoa.getNireListaPelikulakOsoa().gehituPelikula(a[0]);
+				for(int i=0;i<aktoreak.length;i++){
+					Aktorea aktore=ListaAktoreakOsoa.getNireListaAktoreakOsoa().aktoreaGehitu(aktoreak[i]);
+					aktore.gehituPelikula(peli);
+				}
 			}
 		entrada.close(); 
 		}
 		catch(IOException e) {e.printStackTrace();}
 	}
 	
-	public void aktoreaGehitu(String pAktorea){ //Aktore bat listaAktore batean txertatzen du
+	public Aktorea aktoreaGehitu(String pAktorea){ //Aktore bat listaAktore batean txertatzen du
 		Aktorea a=new Aktorea(pAktorea);
 		if (!this.map.containsKey(a)){ //galdetu
 			this.map.put(pAktorea,a);
 		}
+		return a;
 	}
 	
 	public Aktorea aktoreaBilatu(Aktorea pAktorea){

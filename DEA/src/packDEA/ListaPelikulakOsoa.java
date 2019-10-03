@@ -17,11 +17,12 @@ public class ListaPelikulakOsoa {
 		
 		return nireListaPelikulakOsoa;
 	}
-	public void gehituPelikula(String pString) {
+	public Pelikula gehituPelikula(String pString) {
 		Pelikula p=new Pelikula(pString);
 		if (!this.map.containsKey(p)){ //galdetu
 			this.map.put(pString,p);
 		}
+		return p;
 	}
 	
 	public Pelikula pelikulaBilatu(Pelikula pPelikula) {
