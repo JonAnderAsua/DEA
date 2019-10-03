@@ -1,5 +1,4 @@
 package packDEA;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ListaPelikulakOsoa {
@@ -33,6 +32,4 @@ public class ListaPelikulakOsoa {
 		}
 		return emaitza;
 	}
-	
-
 }
