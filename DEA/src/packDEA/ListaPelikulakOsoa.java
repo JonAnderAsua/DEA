@@ -2,12 +2,12 @@ package packDEA;
 import java.util.HashMap;
 
 public class ListaPelikulakOsoa {
-	private HashMap<Integer,Pelikula> map=null;
+	private HashMap<String,Pelikula> map=null;
 	private int giltza=0;
 	private static ListaPelikulakOsoa nireListaPelikulakOsoa=null;
 	
 	private ListaPelikulakOsoa() {
-		this.map=new HashMap<Integer,Pelikula>();
+		this.map=new HashMap<String,Pelikula>();
 	}
 	
 	public static ListaPelikulakOsoa getNireListaPelikulakOsoa() {
@@ -20,9 +20,8 @@ public class ListaPelikulakOsoa {
 	public void gehituPelikula(String pString) {
 		Pelikula p=new Pelikula(pString);
 		if (!this.map.containsKey(p)){ //galdetu
-			this.map.put(this.giltza,p);
+			this.map.put(pString,p);
 		}
-		this.giltza++;
 	}
 	
 	public Pelikula pelikulaBilatu(Pelikula pPelikula) {
