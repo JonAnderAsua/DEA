@@ -3,7 +3,6 @@ import java.util.HashMap;
 
 public class ListaPelikulakOsoa {
 	private HashMap<String,Pelikula> map=null;
-	private int giltza=0;
 	private static ListaPelikulakOsoa nireListaPelikulakOsoa=null;
 	
 	private ListaPelikulakOsoa() {

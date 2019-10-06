@@ -9,7 +9,6 @@ import java.util.HashMap;
 
 public class ListaAktoreakOsoa {
 	private HashMap<String,Aktorea> map=null;
-	private int giltza=0;
 	private static ListaAktoreakOsoa nireListaAktoreakOsoa;
 	
 	private ListaAktoreakOsoa() {
@@ -58,9 +57,6 @@ public class ListaAktoreakOsoa {
 		return emaitza;
 	}
 	
-	public void listaAktoreakSortu(){  //Pelikulen eta aktoreen fitxategia irakurtzen du
-		this.cargarLista("FilmActors20162017.txt");
-	}
 	public void ordenatu() {
 		SortedSet<Aktorea> valores = new TreeSet<>(map.values()); //GALDETU
 	}
