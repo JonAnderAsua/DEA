@@ -41,7 +41,7 @@ public class listaAktoreak {
 	}
 	
 	public void zerrendaOrdenatu(){ //listaAktoreak ordenatzen du
-		List<String> listaBerria = this.lista.Cast<String>().ToList();
+		ArrayList<String> listaBerria = this.lista.Cast<String>().ToArray();
 		Collections.sort(listaBerria);
 		return (ArrayList<String>) listaBerria;
 	}
@@ -66,8 +66,7 @@ public class listaAktoreak {
 	    BufferedWriter escritura = new BufferedWriter(fw);
 	    for(int i=0;i<lista.size();i++){
 	        escritura.write(lista.get(i));
-	        escritura.newLine();
-
+	        escritura.newLine();	
 	    }
 	    escritura.close();
 	}
