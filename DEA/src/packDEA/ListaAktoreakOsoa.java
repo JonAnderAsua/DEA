@@ -4,7 +4,12 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 
 public class ListaAktoreakOsoa {
@@ -57,7 +62,20 @@ public class ListaAktoreakOsoa {
 		return emaitza;
 	}
 	
-	public void ordenatu() {
-		SortedSet<Aktorea> valores = new TreeSet<>(map.values()); //GALDETU
+	public ArrayList<String> ordenatu() {
+		List<String> listaordenatua = new ArrayList<>(map.keySet());
+		Collections.sort(listaordenatua);
+		return (ArrayList<String>) listaordenatua;
+	}
+	
+	public listaAktoreak pelikularenAktoreak(Pelikula pPelikula) {
+		listaAktoreak lista=new listaAktoreak();
+		Iterator it = map.entrySet().iterator();
+		while (it.hasNext()) {
+		    Map.Entry e = (Map.Entry)it.next();
+		    Aktorea a=e.getValue();
+		    lista.aktoreaGehitu(a);
+		}
+		return lista;
 	}
 }
