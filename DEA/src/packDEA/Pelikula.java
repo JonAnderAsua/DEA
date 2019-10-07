@@ -9,6 +9,10 @@ public class Pelikula {
 	}
 	
 	public void setDirua(int pDirua) {
-		this.dirua=pDirua;
+		//Aurre:Zenbakia positiboa izatea
+		//Post:Dirua atributua aldatzen da
+		if(pDirua>=0) {
+			this.dirua=pDirua;
+		}
 	}
 }

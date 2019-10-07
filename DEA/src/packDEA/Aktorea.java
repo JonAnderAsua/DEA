@@ -10,23 +10,33 @@ public class Aktorea {
 		this.lista=this.pelikulenLista();
 	}
 	
-	public listaFilmak pelikulenLista(){ //Aktorearen pelikulen lista bueltatzen du
+	public listaFilmak pelikulenLista(){
+		//Aurre:
+		//Post: Aktorearen pelikulen lista bueltatzen du
 		return this.lista;
 	}
 	
-	public boolean izenBerdina(String pIzena) {  //Sartutako Stringa eta aktorearen izena berdinak diren konparatzen du
+	public boolean izenBerdina(String pIzena) {
+		//Aurre:
+		//Post: Sartutako Stringa eta aktorearen izenaren arteko konparaketa egiten du, berdinak badira true bueltatzen du, bestela false
 		return (this.izenAbizena.equals(pIzena));
 	}
 	
-	public boolean pelikulanParteHartu(Pelikula pPelikula) { //Aktorea sartutako pelikulan parte hartu duen ala ez adierazten du
+	public boolean pelikulanParteHartu(Pelikula pPelikula) {
+		//Aurre:
+		//Post: Aktorea sartutako pelikulan parte hartzen duen ala ez adierazten du, parte hartzen badu true bueltatzen du, bestela false
 		return this.lista.badago(pPelikula);
 	}
 	
 	public String getIzena() {
+		//Aurre:
+		//Post: Aktorearen izena bueltatzen du
 		return this.izenAbizena;
 	}
 	
 	public void gehituPelikula(Pelikula pPelikula) {
+		//Aurre:
+		//Post: pPelikula aktorea duen pelikulen zerrendan gehitzen du
 		this.lista.pelikulaGehitu(pPelikula);
 	}
 }

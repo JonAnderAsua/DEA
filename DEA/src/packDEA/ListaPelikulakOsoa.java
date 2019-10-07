@@ -17,6 +17,8 @@ public class ListaPelikulakOsoa {
 		return nireListaPelikulakOsoa;
 	}
 	public Pelikula gehituPelikula(String pString) {
+		//Aurre:
+		//Post: Pelikula ez badago HashMapean txertatzen du
 		Pelikula p=new Pelikula(pString);
 		if (!this.map.containsKey(p)){ //galdetu
 			this.map.put(pString,p);
@@ -25,6 +27,8 @@ public class ListaPelikulakOsoa {
 	}
 	
 	public Pelikula pelikulaBilatu(Pelikula pPelikula) {
+		//Aurre:
+		//Post: Pelikulan HashMapean bilatzen du, aurkitzen badu Pelikula hori bueltatzen du, bestela null bueltatzen du
 		Pelikula emaitza=null;
 		if(map.containsKey(pPelikula)) {
 			emaitza=pPelikula;

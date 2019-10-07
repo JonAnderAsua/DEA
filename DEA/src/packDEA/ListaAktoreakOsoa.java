@@ -27,7 +27,9 @@ public class ListaAktoreakOsoa {
 		return nireListaAktoreakOsoa;
 	}
 	
-	public void cargarLista(String nomF){      
+	public void cargarLista(String nomF){  
+		//Aurre:
+		//Post: Fitxategia existitzen bada bi HashMap sortzen ditu, bat pelikula guztiekin eta beste bat aktore guztiekin
 		try {
 			Scanner entrada = new Scanner(new FileReader(nomF));      
 			String linea;     
@@ -46,15 +48,19 @@ public class ListaAktoreakOsoa {
 		catch(IOException e) {e.printStackTrace();}
 	}
 	
-	public Aktorea aktoreaGehitu(String pAktorea){ //Aktore bat listaAktore batean txertatzen du
+	public Aktorea aktoreaGehitu(String pAktorea){
+		//Aurre:
+		//Post: Aktorea ez badago HashMapean txertatzen du
 		Aktorea a=new Aktorea(pAktorea);
-		if (!this.map.containsKey(a)){ //galdetu
+		if (!this.map.containsKey(a)){ 
 			this.map.put(pAktorea,a);
 		}
 		return a;
 	}
 	
 	public Aktorea aktoreaBilatu(Aktorea pAktorea){
+		//Aurre:
+		//Post: Aktorea HashMapean bilatzen du, aurkitzen badu Aktore hori bueltatzen du, bestela null bueltatzen du
 		Aktorea emaitza=null;
 		if(this.map.containsKey(pAktorea)){
 			emaitza=pAktorea;
@@ -63,12 +69,16 @@ public class ListaAktoreakOsoa {
 	}
 	
 	public ArrayList<String> ordenatu() {
+		//Aurre
+		//Post: Mergesort teknika erabiliz HashMapa lista bat bihurtzen du eta ordenatzen du
 		List<String> listaBerria = new ArrayList<>(map.keySet());
 		Collections.sort(listaBerria);
 		return (ArrayList<String>) listaBerria;
 	}
 	
 	public listaAktoreak pelikularenAktoreak(Pelikula pPelikula) {
+		//Aurre:
+		//Post:Pelikula bat sartuta pelikulan parte hartu duten aktoreen zerrenda bueltatzen du
 		listaAktoreak lista=new listaAktoreak();
 		Iterator it = map.entrySet().iterator();
 		while (it.hasNext()) {

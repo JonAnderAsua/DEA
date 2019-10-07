@@ -20,33 +20,45 @@ public class listaAktoreak {
 	}
 	
 	private Iterator<Aktorea> getIteradorea(){
+		//Aurre:
+		//Post: Zerrendaren iteradorea bueltatzen du
 		return this.lista.iterator();
 	}
 	
-	public void aktoreaKendu(Aktorea pAktorea){ //Aktore bat listaAktoretik kentzen du
+	public void aktoreaKendu(Aktorea pAktorea){ 
+		//Aurre:
+		//Post: Aktorea zerrendan badago ezabatzen du
 		if(this.lista.contains(pAktorea)) {
 			this.lista.remove(pAktorea);
 		}
 	}
 	
-	public void aktoreaGehitu(String pIzena){ //Aktore bat listaAktore batean txertatzen du
+	public void aktoreaGehitu(String pIzena){ 
+		//Aurre:
+		//Post: Aktorea zerrendan ez badago gehitzen du
 		Aktorea a=new Aktorea(pIzena);
 		if(!this.lista.contains(a)) {
 			this.lista.add(a);
 		}
 	}
 	
-	public listaFilmak aktorearenPelikulakBueltatu(Aktorea pAktorea) {  //Sartutako aktorearen pelikulak bueltatzen ditu
+	public listaFilmak aktorearenPelikulakBueltatu(Aktorea pAktorea) {
+		//Aurre:
+		//Post: Aktore baten pelikulak bueltatzen du
 		return pAktorea.pelikulenLista();
 	}
 	
-	public void zerrendaOrdenatu(){ //listaAktoreak ordenatzen du
+	public void zerrendaOrdenatu(){
+		//Aurre:
+		//Post: Zerrenda mergesort teknikaren bidez ordenatzen du 
 		ArrayList<String> listaBerria = this.lista.Cast<String>().ToArray();
 		Collections.sort(listaBerria);
 		return (ArrayList<String>) listaBerria;
 	}
 	
-	public listaAktoreak pelikularenAktoreakBueltatu(Pelikula pPelikula) { //Pelikula bat sartuta han agertutako aktoreak bueltatzen ditu
+	public listaAktoreak pelikularenAktoreakBueltatu(Pelikula pPelikula) {
+		//Aurre:
+		//Post: Pelikula bat sartuta pelikulan parte hartzen duten aktoreen zerrenda bueltatzen du
 		listaAktoreak l = new listaAktoreak();
 		Aktorea a=null;
 		Iterator<Aktorea>itr=this.getIteradorea();
@@ -59,7 +71,9 @@ public class listaAktoreak {
 		return l;
 	}
 	
-	public void zerrendaFitxategianGorde() { //listaAktorea fitxategi batean gordetzen du
+	public void zerrendaFitxategianGorde() {
+		//Aurre: Sartutako helbidea existitzea
+		//Post: Zerrenda fitxategi batean gordetzen du
 		String ruta = "~/DEA/listaAktoreak.txt";
 	    File f = new File(ruta);
 	    FileWriter fw = new FileWriter(f);
