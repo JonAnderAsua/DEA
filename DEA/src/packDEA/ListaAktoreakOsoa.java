@@ -63,9 +63,9 @@ public class ListaAktoreakOsoa {
 	}
 	
 	public ArrayList<String> ordenatu() {
-		List<String> listaordenatua = new ArrayList<>(map.keySet());
-		Collections.sort(listaordenatua);
-		return (ArrayList<String>) listaordenatua;
+		List<String> listaBerria = new ArrayList<>(map.keySet());
+		Collections.sort(listaBerria);
+		return (ArrayList<String>) listaBerria;
 	}
 	
 	public listaAktoreak pelikularenAktoreak(Pelikula pPelikula) {

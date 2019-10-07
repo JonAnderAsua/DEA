@@ -10,7 +10,7 @@ public class Aktorea {
 		this.lista=this.pelikulenLista();
 	}
 	
-	private listaFilmak pelikulenLista(){ //Aktorearen pelikulen lista bueltatzen du
+	public listaFilmak pelikulenLista(){ //Aktorearen pelikulen lista bueltatzen du
 		return this.lista;
 	}
 	

@@ -1,7 +1,9 @@
 package packDEA;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -35,44 +37,13 @@ public class listaAktoreak {
 	}
 	
 	public listaFilmak aktorearenPelikulakBueltatu(Aktorea pAktorea) {  //Sartutako aktorearen pelikulak bueltatzen ditu
-		return pAktorea.listaBueltatu();
+		return pAktorea.pelikulenLista();
 	}
 	
-	public void zerrendaOrdenatu(listaAktoreak[] pLista){ //listaAktoreak ordenatzen du
-		quickSort(pLista,0,pLista.luzera()-1);
-	}
-	
-	private void quickSort(listaAktoreak taulaBat[],int pHasiera, int pBukaera){
-		if(pBukaera-pHasiera>0){
-			int indizeaZatiketa=zatiketa(taulaBat,pHasiera,pBukaera);
-			quickSort(taulaBat, pHasiera, indizeaZatiketa-1);
-			quickSort(taulaBat,indizeaZatiketa+1,pBukaera);
-		}
-	}
-	
-	private int zatiketa(listaAktoreak[] taula,int pI,int pF){
-		Aktorea lag=taula[pI];
-		int ezker=pI;
-		int eskuin=pF;
-		while(ezker<eskuin){
-			while(taula[ezker].compareTo(lag)<=0 && ezker<eskuin) {
-				ezker++;
-			}
-			while(taula[eskuin].compareTo(lag)>0){
-				eskuin--;
-			}
-			if(ezker<eskuin) {
-				swap(taula,ezker,eskuin);
-			}
-		}
-		taula[pI]=taula[eskuin];
-		taula[eskuin]=lag;
-	}
-	
-	private void swap(listaAktoreak taula,int pOne, int pTwo) {
-		Aktorea temp=taula[pOne];
-		taula[pOne]=taula[pTwo];
-		taula[pTwo]=temp;
+	public void zerrendaOrdenatu(){ //listaAktoreak ordenatzen du
+		List<String> listaBerria = this.lista.Cast<String>().ToList();
+		Collections.sort(listaBerria);
+		return (ArrayList<String>) listaBerria;
 	}
 	
 	public listaAktoreak pelikularenAktoreakBueltatu(Pelikula pPelikula) { //Pelikula bat sartuta han agertutako aktoreak bueltatzen ditu
