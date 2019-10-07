@@ -18,10 +18,6 @@ public class Aktorea {
 		return (this.izenAbizena.equals(pIzena));
 	}
 	
-	public listaFilmak listaBueltatu() { //Aktorearen filmak (listaFilmak) bueltatzen du
-		return this.lista;
-	}
-	
 	public boolean pelikulanParteHartu(Pelikula pPelikula) { //Aktorea sartutako pelikulan parte hartu duen ala ez adierazten du
 		return this.lista.badago(pPelikula);
 	}
