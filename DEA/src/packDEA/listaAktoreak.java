@@ -51,7 +51,7 @@ public class listaAktoreak {
 	public void zerrendaOrdenatu(){
 		//Aurre:
 		//Post: Zerrenda mergesort teknikaren bidez ordenatzen du 
-		ArrayList<String> listaBerria = this.lista.Cast<String>().ToArray();
+		List<String> listaBerria = this.lista.Cast<String>().ToArray();
 		Collections.sort(listaBerria);
 		return (ArrayList<String>) listaBerria;
 	}
