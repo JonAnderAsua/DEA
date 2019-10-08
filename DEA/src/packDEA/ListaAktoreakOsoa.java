@@ -84,7 +84,9 @@ public class ListaAktoreakOsoa {
 		while (it.hasNext()) {
 		    Map.Entry e = (Map.Entry)it.next();
 		    Aktorea a=e.getValue();
-		    lista.aktoreaGehitu(a);
+		    if(a.pelikulanParteHartu(pPelikula)){
+		    	lista.aktoreaGehitu(a);
+		    }
 		}
 		return lista;
 	}
