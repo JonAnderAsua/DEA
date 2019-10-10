@@ -71,9 +71,8 @@ public class ListaAktoreakOsoa {
 	public ArrayList<String> ordenatu() {
 		//Aurre
 		//Post: Mergesort teknika erabiliz HashMapa lista bat bihurtzen du eta ordenatzen du
-		List<String> listaBerria = new ArrayList<>(map.keySet());
-		Collections.sort(listaBerria);
-		return (ArrayList<String>) listaBerria;
+		listaAktoreak listaBerria = new ArrayList<>(map.keySet());
+		listaBerria.zerrendaOrdenatu();
 	}
 	
 	public listaAktoreak pelikularenAktoreak(Pelikula pPelikula) {
