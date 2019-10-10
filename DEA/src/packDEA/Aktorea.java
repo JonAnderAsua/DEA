@@ -43,7 +43,6 @@ public class Aktorea {
 
 	public int compareTo(Aktorea pivot) {
 		Aktorea a= new Aktorea(this.izenAbizena);
-		
 		return pivot.compareTo(a);
 	}
 }
