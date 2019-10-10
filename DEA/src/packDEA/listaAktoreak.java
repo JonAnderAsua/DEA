@@ -56,7 +56,7 @@ public class listaAktoreak {
 		return (ArrayList<String>) listaBerria;
 	}
 	
-	public static ArrayList<Aktorea> quickSort(ArrayList<Aktorea> list){
+	private static ArrayList<Aktorea> quickSort(ArrayList<Aktorea> list){
 	    if (list.isEmpty()) 
 	        return list;
 	    ArrayList<Aktorea> sorted; 
