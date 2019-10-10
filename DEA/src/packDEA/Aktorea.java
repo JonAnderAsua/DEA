@@ -40,4 +40,10 @@ public class Aktorea {
 		//Post: pPelikula aktorea duen pelikulen zerrendan gehitzen du
 		this.lista.pelikulaGehitu(pPelikula);
 	}
+
+	public int compareTo(Aktorea pivot) {
+		Aktorea a= new Aktorea(this.izenAbizena);
+		
+		return pivot.compareTo(a);
+	}
 }
