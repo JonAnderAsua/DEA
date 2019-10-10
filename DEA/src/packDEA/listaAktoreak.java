@@ -52,9 +52,34 @@ public class listaAktoreak {
 		//Aurre:
 		//Post: Zerrenda mergesort teknikaren bidez ordenatzen du 
 		List<String> listaBerria = this.lista.Cast<String>().ToArray();
-		Collections.sort(listaBerria);
+		Collections.quickSort(listaBerria);
 		return (ArrayList<String>) listaBerria;
 	}
+	
+	public static ArrayList<Aktorea> quickSort(ArrayList<Aktorea> list){
+	    if (list.isEmpty()) 
+	        return list;
+	    ArrayList<Aktorea> sorted; 
+	    ArrayList<Aktorea> smaller = new ArrayList<Aktorea>(); 
+	    ArrayList<Aktorea> greater = new ArrayList<Aktorea>(); 
+	    Aktorea pivot = list.get(0); 
+	    int i;
+	    Aktorea j; 
+	    for (i=1;i<list.size();i++){
+	        j=list.get(i);
+	        if (j.compareTo(pivot)<0) 
+	            smaller.add(j);
+	        else
+	            greater.add(j);
+	    }
+	    smaller=quickSort(smaller);  // capitalise 's'
+	    greater=quickSort(greater);  // sort both halfs recursively
+	    smaller.add(pivot);          // add initial pivot to the end of the (now sorted) smaller Vehicles
+	    smaller.addAll(greater);     // add the (now sorted) greater Vehicles to the smaller ones (now smaller is essentially your sorted list)
+	    sorted = smaller;            // assign it to sorted; one could just as well do: return smaller
+
+	    return sorted;
+	}	
 	
 	public listaAktoreak pelikularenAktoreakBueltatu(Pelikula pPelikula) {
 		//Aurre:
