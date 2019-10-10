@@ -28,6 +28,7 @@ public class Aktorea {
 		return this.lista.badago(pPelikula);
 	}
 	
+	
 	public String getIzena() {
 		//Aurre:
 		//Post: Aktorearen izena bueltatzen du

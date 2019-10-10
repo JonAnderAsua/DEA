@@ -68,11 +68,22 @@ public class ListaAktoreakOsoa {
 		return emaitza;
 	}
 	
-	public ArrayList<String> ordenatu() {
+	public listaAktoreak ordenatu() {
 		//Aurre
 		//Post: Mergesort teknika erabiliz HashMapa lista bat bihurtzen du eta ordenatzen du
-		listaAktoreak listaBerria = new ArrayList<>(map.keySet());
-		listaBerria.zerrendaOrdenatu();
+		listaAktoreak l= new listaAktoreak();
+		ArrayList<String> listaBerria = new ArrayList<String>(map.keySet());
+		l=ListaAktoreakOsoa.getNireListaAktoreakOsoa().stringetikAktorera(listaBerria);
+		return l;
+	}
+	
+	public listaAktoreak stringetikAktorera(ArrayList<String> pArray) {
+		listaAktoreak l=new listaAktoreak();
+		for(int i=0;i<=pArray.size();i++) {
+			String izena=pArray.get(i);
+			l.aktoreaGehitu(izena);
+		}
+		return l;
 	}
 	
 	public listaAktoreak pelikularenAktoreak(Pelikula pPelikula) {
@@ -82,9 +93,9 @@ public class ListaAktoreakOsoa {
 		Iterator it = map.entrySet().iterator();
 		while (it.hasNext()) {
 		    Map.Entry e = (Map.Entry)it.next();
-		    Aktorea a=e.getValue();
+		    Aktorea a= (Aktorea) e.getValue();
 		    if(a.pelikulanParteHartu(pPelikula)){
-		    	lista.aktoreaGehitu(a);
+		    	lista.aktoreaGehitu(a.getIzena());
 		    }
 		}
 		return lista;

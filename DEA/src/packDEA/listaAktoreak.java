@@ -99,12 +99,17 @@ public class listaAktoreak {
 		//Post: Zerrenda fitxategi batean gordetzen du
 		String ruta = "~/DEA/listaAktoreak.txt";
 	    File f = new File(ruta);
-	    FileWriter fw = new FileWriter(f);
+	    try {
+	    	FileWriter fw = new FileWriter(f);
 	    BufferedWriter escritura = new BufferedWriter(fw);
 	    for(int i=0;i<lista.size();i++){
-	        escritura.write(lista.get(i));
+	        escritura.write(lista.get(i).getIzena());//write(lista.get(i));
 	        escritura.newLine();	
 	    }
 	    escritura.close();
+	    }
+	    catch(IOException fw) {
+	    	System.out.println("Fitxategia ez da existitzen");
+	    }
 	}
 }
