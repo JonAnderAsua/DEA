@@ -51,12 +51,10 @@ public class listaAktoreak {
 	public void zerrendaOrdenatu(){
 		//Aurre:
 		//Post: Zerrenda mergesort teknikaren bidez ordenatzen du 
-		List<String> listaBerria = this.lista.Cast<String>().ToArray();
-		Collections.quickSort(listaBerria);
-		return (ArrayList<String>) listaBerria;
+		this.quickSort(this.lista);
 	}
 	
-	private static ArrayList<Aktorea> quickSort(ArrayList<Aktorea> list){
+	private ArrayList<Aktorea> quickSort(ArrayList<Aktorea> list){
 	    if (list.isEmpty()) 
 	        return list;
 	    ArrayList<Aktorea> sorted; 
