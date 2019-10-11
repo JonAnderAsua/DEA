@@ -100,4 +100,8 @@ public class ListaAktoreakOsoa {
 		}
 		return lista;
 	}
+	
+	public int luzera() {
+		return this.map.size();
+	}
 }
