@@ -15,4 +15,8 @@ public class Pelikula {
 			this.dirua=pDirua;
 		}
 	}
+	
+	public int getDirua() {
+		return this.dirua;
+	}
 }
