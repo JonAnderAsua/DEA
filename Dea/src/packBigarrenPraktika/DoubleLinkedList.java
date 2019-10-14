@@ -23,6 +23,17 @@ public class DoubleLinkedList {
 		return this.deskribapena;
 	}
 	
+	public Ikaslea removeFirst() {
+		Ikaslea ik=null;
+		if(!isEmpty()) {
+			ik=first.data;
+		}
+		return ik;
+	}
+	
+	private boolean isEmpty() {
+		return first==null;
+	}
 	
 	
 }
