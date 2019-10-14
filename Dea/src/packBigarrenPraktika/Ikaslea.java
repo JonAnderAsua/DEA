@@ -8,5 +8,13 @@ public class Ikaslea {
 		this.izena=pIzena;
 		this.nan=pNan;
 	}
+	
+	public int getNan() {
+		return this.nan;
+	}
+	
+	public boolean konparatu(Ikaslea pIkaslea) {
+		return (this.nan==pIkaslea.getNan());
+	}
 
 }
