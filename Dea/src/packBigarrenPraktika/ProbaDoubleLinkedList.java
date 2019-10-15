@@ -39,5 +39,5 @@ public class ProbaDoubleLinkedList {
 		System.out.println("0? " + l.find(0));
 		System.out.println("7? " + l.find(7));
 		
-}
+	}
 }
