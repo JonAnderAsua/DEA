@@ -53,7 +53,9 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		// KODEA OSATU ETA KOSTUA KALKULATU
 		Node lag;
 		boolean topatuta=false;
+		T emaitza=null;
 		if(first.data.equals(elem)){
+			first.next.prev=first.prev;
 			first=first.next;
 		}
 		else {
@@ -63,9 +65,11 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			}
 		}
 		if(topatuta) {
+			emaitza=lag.data;
+			lag.next.prev=lag.prev;
+			lag=lag.next;
 			count--;
 		}
-		T emaitza=lag.data;
 		return emaitza;
      }
 
