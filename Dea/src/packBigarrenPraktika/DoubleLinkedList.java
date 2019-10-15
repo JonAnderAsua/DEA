@@ -40,15 +40,9 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	// listako azken elementua kendu da
 	// Aurrebaldintza: zerrenda ez da hutsa
 		// KODEA OSATU ETA KOSTUA KALKULATU
-		Node lag;
-		lag=first;
-		while(lag.next!=null) {
-			lag=lag.next;
-		}
-		T emaitza=lag.next.data;
-		lag.next=null;
-		count--;
-		return emaitza;
+		T lag=first.prev.data;
+		first.prev=first.prev.prev;
+		return lag;
     }
 		//Kostua = n, zerrenda estekatuaren adabegi guztiak zeharkatu behar dituelako
 
@@ -71,7 +65,8 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		if(topatuta) {
 			count--;
 		}
-		return lag.data;
+		T emaitza=lag.data;
+		return emaitza;
      }
 
 	//Kostua = n da, kasurik txarrenean zerrenda osoa zeharkatu behar duelako	
