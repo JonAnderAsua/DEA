@@ -1,148 +1,161 @@
 package packBigarrenPraktika;
 
-public class DoubleLinkedList {
-	private LinearNode first;
-	private LinearNode last;
-	private int count;
-	private String deskribapena;
-	
-	
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class DoubleLinkedList<T> implements ListADT<T> {
+
+	// Atributuak
+	protected Node<T> first; // lehenengoaren erreferentzia
+	protected String deskr;  // deskribapena
+	protected int count;
+
 	public DoubleLinkedList() {
-		first=null;
-		last=null;
-		count=size();
+		first = null;
+		deskr = "";
+		count = 0;
 	}
 	
-	public void setDesk(String pDeskribapena){
-		//Aurre:
-		//Post: Sartutako Stringa deskribapena bihurtzen du
-		this.deskribapena=pDeskribapena;
+	public void setDeskr(String ize) {
+	  deskr = ize;
 	}
-	
-	public String getDesk(){
-		//Aurre:
-		//Post: Linked listaren deskribapena bueltatzen du
-		return this.deskribapena;
+
+	public String getDeskr() {
+	  return deskr;
 	}
-	
-	public Ikaslea removeFirst(){
-		//Aurre:
-		//Post: Lehenengo linear nodea ezabatzen du
-		Ikaslea ik=null;
-		if(!isEmpty()) {
-			ik=first.data;
-			first=first.next;
-		}
-		return ik;
-	}
-	
-	private boolean isEmpty() {
-		//Aurre:
-		//Post: Lista hutsa dagoen ala ez adierazten du, hutsa bada True bueltako du, bestela false
-		return first==null;
-	}
-	
-	public Ikaslea removeLast() {
-		//Aurre:
-		//Post: Lisha Hutsa ez bada azkenengo Linear Nodea ezabatzen du eta ezabatutakoa bueltatzen du
-		LinearNode lag=new LinearNode();
-		if(!isEmpty()) {
-			lag=first;
-			while(last.next!=null) {
-				last=lag.next;
-			}
-			lag=last;
-			last=null;
-		}
-		return lag.data;
-	}
-	
-	public Ikaslea removeElem(Ikaslea pIkaslea){
-		//Aurre:
-		//Post: Sartutako elementua listan badago ezabatzen eta bueltatzen du
-		boolean topatua=false;
-		if(!isEmpty()) {
-			LinearNode lag = new LinearNode();
-			LinearNode lag2 = new LinearNode();
-			lag=first;
-			lag2=first.next;
-			topatua=lag.data.konparatu(pIkaslea);
-			lag=first.next;
-			while(lag!=null&&!topatua) {
-				lag=lag.next;
-				lag2=lag2.next;
-				topatua=lag.data.konparatu(pIkaslea);
-			}
-			if(topatua) {
-				lag2=lag2.next.next;
-			}
-			return lag.data;
-		}
-	}
-	
-	public Ikaslea first() {
-		//Aurre:
-		//Post: Zerrendaren lehenengo elementua bueltatzen du
-		Ikaslea lag=null;
-		if(!isEmpty()) {
-			lag=first.data;
-		}
+
+	public T removeFirst() {
+	// listako lehen elementua kendu da
+	// Aurrebaldintza: zerrenda ez da hutsa
+		// KODEA OSATU ETA KOSTUA KALKULATU
+		T lag=first.data;
+		first=first.next;
+		count--;
 		return lag;
 	}
 	
-	public Ikaslea last(){
-		//Aurre:
-		//Post: Zerrendaren azkenengo elementua bueltatzen du
-		LinearNode lag=new LinearNode();
-		if(!isEmpty()) {
+	//Kostua konstante da lehenengo elementua bakarrik begiratzen delako
+
+	public T removeLast() {
+	// listako azken elementua kendu da
+	// Aurrebaldintza: zerrenda ez da hutsa
+		// KODEA OSATU ETA KOSTUA KALKULATU
+		Node lag;
+		lag=first;
+		while(lag.next!=null) {
+			lag=lag.next;
+		}
+		T emaitza=lag.next.data;
+		lag.next=null;
+		count--;
+		return emaitza;
+    }
+		//Kostua = n, zerrenda estekatuaren adabegi guztiak zeharkatu behar dituelako
+
+	public T remove(T elem) {
+	// Aurrebaldintza: zerrenda ez da hutsa
+	// Balio hori listan baldin badago, bere lehen agerpena ezabatuko dut. Kendutako objektuaren erreferentzia 
+        //  bueltatuko du (null ez baldin badago)
+		// KODEA OSATU ETA KOSTUA KALKULATU
+		Node lag;
+		boolean topatuta=false;
+		if(first.data.equals(elem)){
+			first=first.next;
+		}
+		else {
 			lag=first;
-			while(lag.next!=null){
+			while(lag!=null&&!topatuta) {
+				topatuta=(lag.data.equals(elem));
+			}
+		}
+		if(topatuta) {
+			count--;
+		}
+		return lag.data;
+     }
+
+	//Kostua = n da, kasurik txarrenean zerrenda osoa zeharkatu behar duelako	
+	
+	public T first() {
+	// listako lehen elementua ematen du
+	      if (isEmpty())
+	          return null;
+	      else return first.data;
+	}
+
+	public T last() {
+	// listako azken elementua ematen du
+	      if (isEmpty())
+	          return null;
+	      else return first.prev.data;
+	}
+
+	public boolean contains(T elem) {
+	// Egiazkoa bueltatuko du aurkituz gero, eta false bestela
+	// KODEA OSATU ETA KOSTUA KALKULATU
+		boolean badago=false;
+		Node lag;
+		if(!isEmpty()) {
+			badago=first.data.equals(elem);
+			lag=first.next;
+			while(lag!=null&&!badago) {
+				badago=lag.data.equals(elem);
+				lag=lag.next;
+			}
+		}
+		return badago;
+	}
+	//Kostua = n da, kasurik txarrenean zerrenda osoa zeharkatu behar duelako	
+	
+	
+	public T find(T elem) {
+	// Elementua bueltatuko du aurkituz gero, eta null bestela
+		// KODEA OSATU ETA KOSTUA KALKULATU
+		boolean badago=false;
+		Node lag;
+		if(!isEmpty()) {
+			badago=first.data.equals(elem);
+			lag=first.next;
+			while(lag!=null&&!badago) {
+				badago=lag.data.equals(elem);
 				lag=lag.next;
 			}
 		}
 		return lag.data;
 	}
 	
-	public boolean contains(Ikaslea pIkaslea) {
-		//Aurre:
-		//Post:Elementua listan dagoen ala ez adierazten du, badago true bueltatuko du, bestela false
-		LinearNode lag=new LinearNode();
-		boolean topatua=false;
-		if(!isEmpty()) {
-			lag=first;
-			while(lag!=null&&!topatua) {
-				topatua=lag.data.konparatu(pIkaslea);
-				lag=lag.next;
-			}
+	//Kostua = n da, kasurik txarrenean zerrenda osoa zeharkatu behar duelako	
+
+	public boolean isEmpty() 
+	{ return first == null;};
+	
+	public int size() 
+	{ return count;};
+	
+	/** Return an iterator to the stack that iterates through the items . */ 
+	   public Iterator<T> iterator() { return new ListIterator(); } 
+
+	   // an iterator, doesn't implement remove() since it's optional 
+	   private class ListIterator implements Iterator<T> { 
+
+		// KODEA OSATU 
+	   } // private class
+		
+		
+		public void adabegiakInprimatu() {
+			System.out.println(this.toString());
 		}
-		return topatua;
-	}
-	
-	public Ikaslea find(Ikaslea pIkaslea) {
-		//Aurre:
-		//Post: Elemetua zerrendan bilatzen du, badago elementu hori bueltatuko du, bestela null
-		Ikaslea ik=null;
-		if(contains(pIkaslea)) {
-			ik=pIkaslea;
+
+		
+		@Override
+		public String toString() {
+			String result = new String();
+			Iterator<T> it = iterator();
+			while (it.hasNext()) {
+				T elem = it.next();
+				result = result + "[" + elem.toString() + "] \n";
+			}	
+			return "SimpleLinkedList " + result + "]";
 		}
-		return ik;
-	}
-	
-	public int size() {
-		//Aurre:
-		//Post: Listaren tamaina bueltatzen du
-		int kont=0;
-		LinearNode lag=new LinearNode();
-		if(!isEmpty()) {
-			lag=first;
-			while(lag!=null) {
-				lag=lag.next;
-				kont++;
-			}
-		}
-		return kont;
-	}
-	
-	
-	
+
 }
