@@ -35,7 +35,19 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 	
 	public void addAfter(T elem, T target) {
 		// KODEA OSATU ETA KOSTUA KALKULATU (AUKERAZKOA)
-		
+		if(!contains(target)) {
+			System.out.println("Sartutako target-a ez dago zerrendan");
+		}
+		else {
+			Node lag=new Node(find(target));
+			Node berria=new Node(elem);
+			berria.next=lag.next;
+			berria.prev=lag;
+			lag.next.prev=berria;
+			lag.next=berria;
+		}
 	}
+	
+	//Kostua n da kasurik txarrenean zerrendako nodo guztiak zeharkatu behar direlako
 
 }
