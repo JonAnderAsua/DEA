@@ -1,4 +1,4 @@
-package listasSimples;
+package packBigarrenPraktika;
 
 public interface OrderedListADT<T>  extends ListADT<T> {
 	

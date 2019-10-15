@@ -1,4 +1,4 @@
-package listasSimples;
+package packBigarrenPraktika;
 
 import java.util.Iterator;
 
