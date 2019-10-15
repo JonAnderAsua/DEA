@@ -44,7 +44,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		first.prev=first.prev.prev;
 		return lag;
     }
-		//Kostua = n, zerrenda estekatuaren adabegi guztiak zeharkatu behar dituelako
+		//Kostua = konstantea, firstaren aurreko posizioa bakarrik kudeatzen duelako
 
 	public T remove(T elem) {
 	// Aurrebaldintza: zerrenda ez da hutsa

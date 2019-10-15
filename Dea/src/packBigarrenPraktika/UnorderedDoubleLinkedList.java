@@ -15,19 +15,17 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 	public void addToRear(T elem) {
 	// bukaeran gehitu
 		// KODEA OSATU ETA KOSTUA KALKULATU
-		Node lag;
+		Node berria=new Node(elem);
 		if(isEmpty()) {
-			first=new Node(elem);
+			first=berria;
 			first.prev=first.next=null;
 		}
 		else {
-			lag=first;
-			while(lag.next!=null) {
-				lag=lag.next;
-			}
-			lag.next=new Node(elem);
-			lag.next.prev=lag;
-			lag.next.next=null;
+			first.prev.next=berria;
+			berria.prev=first.prev;
+			first.prev=berria;
+			berria.next=first;
+			
 		}
 	}
 	
