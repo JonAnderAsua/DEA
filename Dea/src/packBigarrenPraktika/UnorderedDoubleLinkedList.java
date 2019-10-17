@@ -29,7 +29,7 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 		}
 	}
 	
-	//Zerrendako elementu guztiak zeharkatu behar dituenez, kostua = n da
+	//Zerrendako elementu guztiak zeharkatu behar dituenez, kostua = n da, n elementu kopurua 
 	
 	public void addAfter(T elem, T target) {
 		// KODEA OSATU ETA KOSTUA KALKULATU (AUKERAZKOA)
@@ -46,6 +46,6 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 		}
 	}
 	
-	//Kostua n da kasurik txarrenean zerrendako nodo guztiak zeharkatu behar direlako
+	//Kostua n (elementu kopurua) da kasurik txarrenean zerrendako nodo guztiak zeharkatu behar direlako
 
 }

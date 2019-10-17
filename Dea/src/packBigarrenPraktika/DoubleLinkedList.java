@@ -42,6 +42,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		// KODEA OSATU ETA KOSTUA KALKULATU
 		T lag=first.prev.data;
 		first.prev=first.prev.prev;
+		first.prev.next=first;
 		return lag;
     }
 		//Kostua = konstantea, firstaren aurreko posizioa bakarrik kudeatzen duelako
@@ -54,21 +55,25 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		Node<T> lag=null;
 		boolean topatuta=false;
 		T emaitza=null;
-		if(first.data.equals(elem)){
+		if(first.data.equals(elem)){//Elementua lehenengoa da
 			emaitza=first.data;
 			removeFirst();
 		}
 		else {
 			lag=first;
-			while(lag!=null&&!topatuta) {
+			while(lag.next!=null&&!topatuta) {
+				lag=lag.next;
 				topatuta=(lag.data.equals(elem));
 			}
 		}
-		if(topatuta) {
+		if(topatuta){//Elementua erdian dago
 			emaitza=lag.data;
 			lag.next.prev=lag.prev;
 			lag=lag.next;
 			count--;
+		}
+		else {//Elementua azkena da
+			lag.prev.next=null;
 		}
 		return emaitza;
      }
@@ -97,9 +102,9 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		if(!isEmpty()) {
 			badago=first.data.equals(elem);
 			lag=first.next;
-			while(lag!=null&&!badago) {
-				badago=lag.data.equals(elem);
+			while(lag.next!=null&&!badago) {
 				lag=lag.next;
+				badago=lag.data.equals(elem);
 			}
 		}
 		return badago;
@@ -113,12 +118,12 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		boolean badago=false;
 		Node<T> lag=null;
 		T emaitza=null;
-		if(!isEmpty()) {
+		if(!isEmpty()){
 			badago=first.data.equals(elem);
 			lag=first.next;
 			while(lag!=null&&!badago) {
-				badago=lag.data.equals(elem);
 				lag=lag.next;
+				badago=lag.data.equals(elem);
 			}
 		}
 		emaitza=lag.data;
