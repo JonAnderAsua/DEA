@@ -125,7 +125,8 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		return emaitza;
 	}
 	
-	//Kostua = n da, kasurik txarrenean zerrenda osoa zeharkatu behar duelako	
+	//Kostua = n da, kasurik txarrenean zerrenda osoa zeharkatu behar duelako. n: Nodo kopurua
+
 
 	public boolean isEmpty() 
 	{ return first == null;};
@@ -139,21 +140,24 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	   // an iterator, doesn't implement remove() since it's optional 
 	   private class ListIterator implements Iterator<T> { 
 		// KODEA OSATU 
-		   private Node current= first.next;
-	       private Node lastAccessed = null;   
-	       private int index = 0;
+		   private Node<T> current=first;
+		   private int index=0;
 
 	       public boolean hasNext(){ 
 	    	   return index < count; 
 	       }
 
 	       public T next() {
-	           if (!hasNext()) throw new NoSuchElementException();
-	           lastAccessed = current;
-               T item = current.data;
-               current = current.next; 
-               index++;
-	           return item;
+	    	   T tmp=null;
+	    	   if (!hasNext()){
+	    		   throw new NoSuchElementException();
+	    	   }
+	    	   else {
+	    		   tmp=current.data;
+	    		   current = current.next;
+	    		   index++;
+	    	   }
+	    	   return tmp;
 	        }
 
 	   } // private class
