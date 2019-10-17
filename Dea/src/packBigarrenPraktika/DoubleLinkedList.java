@@ -51,12 +51,12 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	// Balio hori listan baldin badago, bere lehen agerpena ezabatuko dut. Kendutako objektuaren erreferentzia 
         //  bueltatuko du (null ez baldin badago)
 		// KODEA OSATU ETA KOSTUA KALKULATU
-		Node lag;
+		Node<T> lag=null;
 		boolean topatuta=false;
 		T emaitza=null;
 		if(first.data.equals(elem)){
-			first.next.prev=first.prev;
-			first=first.next;
+			emaitza=first.data;
+			removeFirst();
 		}
 		else {
 			lag=first;
@@ -93,7 +93,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	// Egiazkoa bueltatuko du aurkituz gero, eta false bestela
 	// KODEA OSATU ETA KOSTUA KALKULATU
 		boolean badago=false;
-		Node lag;
+		Node<T> lag;
 		if(!isEmpty()) {
 			badago=first.data.equals(elem);
 			lag=first.next;
@@ -111,7 +111,8 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	// Elementua bueltatuko du aurkituz gero, eta null bestela
 		// KODEA OSATU ETA KOSTUA KALKULATU
 		boolean badago=false;
-		Node lag;
+		Node<T> lag=null;
+		T emaitza=null;
 		if(!isEmpty()) {
 			badago=first.data.equals(elem);
 			lag=first.next;
@@ -120,7 +121,8 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 				lag=lag.next;
 			}
 		}
-		return lag.data;
+		emaitza=lag.data;
+		return emaitza;
 	}
 	
 	//Kostua = n da, kasurik txarrenean zerrenda osoa zeharkatu behar duelako	
@@ -136,8 +138,24 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 
 	   // an iterator, doesn't implement remove() since it's optional 
 	   private class ListIterator implements Iterator<T> { 
-
 		// KODEA OSATU 
+		   private Node current= first.next;
+	       private Node lastAccessed = null;   
+	       private int index = 0;
+
+	       public boolean hasNext(){ 
+	    	   return index < count; 
+	       }
+
+	       public T next() {
+	           if (!hasNext()) throw new NoSuchElementException();
+	           lastAccessed = current;
+               T item = current.data;
+               current = current.next; 
+               index++;
+	           return item;
+	        }
+
 	   } // private class
 		
 		
