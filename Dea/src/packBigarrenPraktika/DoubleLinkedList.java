@@ -28,9 +28,18 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	// listako lehen elementua kendu da
 	// Aurrebaldintza: zerrenda ez da hutsa
 		// KODEA OSATU ETA KOSTUA KALKULATU
-		T lag=first.data;
-		first=first.next;
-		count--;
+		T lag=null;
+		if(!isEmpty()) {
+			lag=first.data;
+			if(first.equals(first.next)) {
+				first=null;
+			}
+			else {
+				first=first.next;
+				
+			}
+			count--;
+		}
 		return lag;
 	}
 	
@@ -40,10 +49,13 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	// listako azken elementua kendu da
 	// Aurrebaldintza: zerrenda ez da hutsa
 		// KODEA OSATU ETA KOSTUA KALKULATU
-		T lag=first.prev.data;
-		first.prev=first.prev.prev;
-		first.prev.next=first;
-		return lag;
+		T emaitza=null;
+		if(!isEmpty()) {
+			emaitza=first.prev.data;
+			first.prev.prev.next=first;
+			first.prev=first.prev.prev;
+		}
+		return emaitza;
     }
 		//Kostua = konstantea, firstaren aurreko posizioa bakarrik kudeatzen duelako
 
@@ -55,25 +67,28 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		Node<T> lag=null;
 		boolean topatuta=false;
 		T emaitza=null;
-		if(first.data.equals(elem)){//Elementua lehenengoa da
-			emaitza=first.data;
-			removeFirst();
-		}
-		else {
-			lag=first;
-			while(lag.next!=null&&!topatuta) {
-				lag=lag.next;
-				topatuta=(lag.data.equals(elem));
+		if(!isEmpty()){//Lista hutsa bada
+			if(first.data.equals(elem)){//Elementua lehenengoa da
+				emaitza=first.data;
+				removeFirst();
 			}
-		}
-		if(topatuta){//Elementua erdian dago
-			emaitza=lag.data;
-			lag.next.prev=lag.prev;
-			lag=lag.next;
-			count--;
-		}
-		else {//Elementua azkena da
-			lag.prev.next=null;
+			else {
+				lag=first;
+				while(lag.next!=null&&!topatuta) {
+					lag=lag.next;
+					topatuta=(lag.data.equals(elem));
+				}
+				if(topatuta){//Elementua erdian dago
+					emaitza=lag.data;
+					lag.next.prev=lag.prev;
+					lag.prev.next=lag.next;
+					count--;
+				}
+				else {//Elementua azkena da
+					lag.prev.next=first;
+					first.prev=lag.prev;
+				}
+			}
 		}
 		return emaitza;
      }
