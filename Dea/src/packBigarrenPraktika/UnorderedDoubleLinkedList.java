@@ -17,6 +17,7 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 			first.prev=lag;
 			first=lag;
 		}
+		count++;
 	}
 	
 	//Kostua = konstantea lehenengo posizioan jartzen duzulako elementu berria
@@ -34,8 +35,8 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 			berria.prev=first.prev;
 			first.prev=berria;
 			berria.next=first;
-			
 		}
+		count++;
 	}
 	
 	//Zerrendako elementu guztiak zeharkatu behar dituenez, kostua = n da, n elementu kopurua 
@@ -46,15 +47,19 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 			System.out.println("Sartutako target-a ez dago zerrendan");
 		}
 		else {
-			Node lag=new Node(find(target));
 			Node berria=new Node(elem);
-			berria.next=lag.next;
-			berria.prev=lag;
-			lag.next.prev=berria;
-			lag.next=berria;
+			Node lag;
+			if(!isEmpty()) {
+				lag=first;
+				while(lag.next!=null&&!lag.data.equals(target)) {
+					lag=lag.next;
+				}	
+				berria.prev=lag;
+				berria.next=lag.next;
+				lag.next.prev=berria;
+				lag.next=berria;
+			}
 		}
 	}
-	
 	//Kostua n (elementu kopurua) da kasurik txarrenean zerrendako nodo guztiak zeharkatu behar direlako
-
 }
