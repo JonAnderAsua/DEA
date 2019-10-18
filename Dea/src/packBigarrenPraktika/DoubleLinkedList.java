@@ -51,9 +51,15 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		// KODEA OSATU ETA KOSTUA KALKULATU
 		T emaitza=null;
 		if(!isEmpty()) {
-			emaitza=first.prev.data;
-			first.prev.prev.next=first;
-			first.prev=first.prev.prev;
+			if(first.prev==first) {
+				emaitza=first.data;
+				removeFirst();
+			}
+			else {
+				first.prev=first.prev.prev;
+				first.prev.next=first;
+			}
+			count--;
 		}
 		return emaitza;
     }
@@ -78,15 +84,18 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 					lag=lag.next;
 					topatuta=(lag.data.equals(elem));
 				}
-				if(topatuta){//Elementua erdian dago
+				if(topatuta && lag.next==null){//Elementua azkena bada
+					lag.prev.next=first;
+					first.prev=lag.prev;
+					count --;
+				}
+				else{
+					if(topatuta){ //erdialdean badago 
 					emaitza=lag.data;
 					lag.next.prev=lag.prev;
 					lag.prev.next=lag.next;
 					count--;
-				}
-				else {//Elementua azkena da
-					lag.prev.next=first;
-					first.prev=lag.prev;
+					}	
 				}
 			}
 		}
@@ -135,8 +144,8 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		T emaitza=null;
 		if(!isEmpty()){
 			badago=first.data.equals(elem);
-			lag=first.next;
-			while(lag!=null&&!badago) {
+			lag=first;
+			while(lag.next!=null&&!badago) {
 				lag=lag.next;
 				badago=lag.data.equals(elem);
 			}
