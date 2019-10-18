@@ -6,8 +6,17 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 	// hasieran gehitu
 		// KODEA OSATU ETA KOSTUA KALKULATU
 		Node lag=new Node(elem);
-		lag.next=first;
-		first=lag;
+		if(isEmpty()){
+			first=lag;
+			first.prev=first.next=first;
+		}
+		else {
+			lag.next=first;
+			lag.prev=first.prev;
+			first.prev.next=lag;
+			first.prev=lag;
+			first=lag;
+		}
 	}
 	
 	//Kostua = konstantea lehenengo posizioan jartzen duzulako elementu berria
