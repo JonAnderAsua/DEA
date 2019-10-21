@@ -6,7 +6,7 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 	// hasieran gehitu
 		// KODEA OSATU ETA KOSTUA KALKULATU
 		Node lag=new Node(elem);
-		if(isEmpty()){
+		if(isEmpty()){ //Lista hutsa bada
 			first=lag;
 			first.prev=first.next=first;
 		}

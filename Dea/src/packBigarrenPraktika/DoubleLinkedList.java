@@ -29,7 +29,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	// Aurrebaldintza: zerrenda ez da hutsa
 		// KODEA OSATU ETA KOSTUA KALKULATU
 		T lag=null;
-		if(!isEmpty()) {
+		if(!isEmpty()) { //Nahiz eta aurrebaldintzan kasu hau agertuko ez dela esan tratatuko dugu
 			lag=first.data;
 			if(first.equals(first.next)) {
 				first=null;
@@ -50,7 +50,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	// Aurrebaldintza: zerrenda ez da hutsa
 		// KODEA OSATU ETA KOSTUA KALKULATU
 		T emaitza=null;
-		if(!isEmpty()) {
+		if(!isEmpty()) { //Nahiz eta aurrebaldintzan kasu hau agertuko ez dela esan tratatuko dugu
 			if(first.prev==first) {
 				emaitza=first.data;
 				removeFirst();
@@ -73,7 +73,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		Node<T> lag=null;
 		boolean topatuta=false;
 		T emaitza=null;
-		if(!isEmpty()){//Lista hutsa bada
+		if(!isEmpty()){//Nahiz eta aurrebaldintzan kasu hau agertuko ez dela esan tratatuko dugu
 			if(first.data.equals(elem)){//Elementua lehenengoa da
 				emaitza=first.data;
 				removeFirst();
@@ -119,7 +119,8 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	}
 
 	public boolean contains(T elem) {
-	// Egiazkoa bueltatuko du aurkituz gero, eta false bestela
+	//Aurre: 
+	//Post: Egiazkoa bueltatuko du aurkituz gero, eta false bestela
 	// KODEA OSATU ETA KOSTUA KALKULATU
 		boolean badago=false;
 		Node<T> lag;
