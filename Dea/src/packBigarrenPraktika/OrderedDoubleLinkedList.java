@@ -32,6 +32,13 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 	public void merge(DoubleLinkedList<T> zerrenda){
 		// KODEA OSATU ETA KOSTUA KALKULATU
 		Node<T>berria;
+		Comparable<T>lehenengoa=(Comparable<T>)first;
+		if(lehenengoa.compareTo(zerrenda.first())<1){ //Sartutako listaren datuak dauden datuak baino handiago badira
+			for(int i=0;i<=zerrenda.size();i++) {
+				berria=zerrenda.posizioanLortu(i);
+				gehituAmaieran(berria);
+			}
+		}
 		for(int i=0;i<=zerrenda.size();i++) {
 			berria=zerrenda.posizioanLortu(i);
 			add(berria.data);

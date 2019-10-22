@@ -164,6 +164,33 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	public int size() 
 	{ return count;};
 	
+	public Node<T> posizioanLortu(Integer pPosizioa){
+		Node<T> emaitza=null;
+		int i=pPosizioa;
+		if(!isEmpty()) {
+			emaitza=first;
+			while(i>=0&&emaitza.next!=null){
+				emaitza=emaitza.next;
+			}
+			if(emaitza.next==null) {
+				emaitza=null;
+			}
+		}
+		return emaitza;
+	}
+	
+	public void gehituAmaieran(Node<T> pNodoa) {
+		Node<T>last;
+		if(!isEmpty()) {
+			last=first;
+			while(last.next!=null) {
+				last=last.next;
+			}
+			pNodoa.prev=last;
+			last.next=pNodoa;	
+		}
+	}
+	
 	/** Return an iterator to the stack that iterates through the items . */ 
 	   public Iterator<T> iterator() { return new ListIterator(); } 
 
@@ -209,18 +236,5 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			return "SimpleLinkedList " + result + "]";
 		}
 
-		public Node<T> posizioanLortu(Integer pPosizioa){
-			Node<T> emaitza=null;
-			int i=pPosizioa;
-			if(!isEmpty()) {
-				emaitza=first;
-				while(i>=0&&emaitza.next!=null){
-					emaitza=emaitza.next;
-				}
-				if(emaitza.next==null) {
-					emaitza=null;
-				}
-			}
-			return emaitza;
-		}
+		
 }
