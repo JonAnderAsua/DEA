@@ -209,4 +209,18 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			return "SimpleLinkedList " + result + "]";
 		}
 
+		public Node<T> posizioanLortu(Integer pPosizioa){
+			Node<T> emaitza=null;
+			int i=pPosizioa;
+			if(!isEmpty()) {
+				emaitza=first;
+				while(i>=0&&emaitza.next!=null){
+					emaitza=emaitza.next;
+				}
+				if(emaitza.next==null) {
+					emaitza=null;
+				}
+			}
+			return emaitza;
+		}
 }
