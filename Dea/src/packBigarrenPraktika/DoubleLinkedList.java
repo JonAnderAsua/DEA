@@ -180,11 +180,15 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	}
 	
 	public void gehituAmaieran(Node<T> pNodoa) {
+	//Aurre:
+	//Post: Nodoa zerrendan ez badago amaieran gehitzen du
 		Node<T>last;
 		if(!isEmpty()) {
 			last=first;
-			while(last.next!=null) {
-				last=last.next;
+			if(!this.contains(pNodoa.data)) {
+				while(last.next!=null) {
+					last=last.next;
+				}
 			}
 			pNodoa.prev=last;
 			last.next=pNodoa;	

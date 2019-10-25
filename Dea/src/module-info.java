@@ -1,2 +1,3 @@
 module DEA {
+	requires junit;
 }

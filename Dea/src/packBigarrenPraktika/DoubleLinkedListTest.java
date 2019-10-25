@@ -198,27 +198,87 @@ public class DoubleLinkedListTest {
 
 	@Test
 	public void testPosizioanLortu() {
-		fail("Not yet implemented");
+		
+		//Lehenengo lista
+		assertTrue(lista.posizioanLortu(1),p1);
+		assertTrue(lista.posizioanLortu(2),p2);
+		assertTrue(lista.posizioanLortu(3),p3);
+		assertTrue(lista.posizioanLortu(4),p4);
+		
+		//Bigarren lista
+		assertTrue(lista2.posizioanLortu(1),p2);
+		assertTrue(lista2.posizioanLortu(2),p2);
+		assertTrue(lista2.posizioanLortu(3),p4);
+		
+		//Hirugarren lista
+		assertTrue(lista3.posizioanLortu(1),p1);
+		assertTrue(lista3.posizioanLortu(2),p2);
+		assertTrue(lista3.posizioanLortu(3),p3);
 	}
 
 	@Test
 	public void testGehituAmaieran() {
-		fail("Not yet implemented");
+		
+		//Lehenengo lista
+		assertEquals(lista.last(),n4);
+		lista.gehituAmaieran(n5);
+		assertEquals(lista.last(),n5);
+		lista.gehituAmaieran(n1);
+		assertEquals(lista.last(),n5);
+		lista.gehituAmaieran(n2);
+		assertEquals(lista.last(),n5);
+		lista.gehituAmaieran(n3);
+		assertEquals(lista.last(),n5);
+		lista.gehituAmaieran(n4);
+		assertEquals(lista.last(),n5);
+		
+		//Bigarren lista
+		assertEquals(lista2.last(),n4);
+		lista2.gehituAmaieran(n1);
+		assertEquals(lista2.last(),n1);
+		lista.gehituAmaieran(n1);
+		assertEquals(lista.last(),n5);
+		lista.gehituAmaieran(n2);
+		assertEquals(lista.last(),n5);
+		lista.gehituAmaieran(n3);
+		assertEquals(lista.last(),n5);
+		lista.gehituAmaieran(n4);
+		assertEquals(lista.last(),n5);
+		
+		//Hirugarren lista
+		assertEquals(lista3.last(),n3);
+		lista3.gehituAmaieran(n4);
+		assertEquals(lista3.last(),n4);
+		lista3.gehituAmaieran(n5);
+		assertEquals(lista3.last(),n5);
+		lista3.gehituAmaieran(n1);
+		assertEquals(lista3.last(),n5);
+		lista3.gehituAmaieran(n2);
+		assertEquals(lista3.last(),n5);
+		lista3.gehituAmaieran(n3);
+		assertEquals(lista3.last(),n5);
+		
+		//Laugarren lista
+		assertNull(lista4.last());
+		lista4.gehituAmaieran(n1);
+		assertEquals(lista4.last(),n1);
+		lista4.gehituAmaieran(n2);
+		assertEquals(lista4.last(),n2);
+		lista4.gehituAmaieran(n3);
+		assertEquals(lista4.last(),n3);
+		lista4.gehituAmaieran(n4);
+		assertEquals(lista4.last(),n4);
+		lista4.gehituAmaieran(n5);
+		assertEquals(lista4.last(),n5);
+		lista4.gehituAmaieran(n1);
+		assertEquals(lista4.last(),n5);
+		lista4.gehituAmaieran(n2);
+		assertEquals(lista4.last(),n5);
+		lista4.gehituAmaieran(n3);
+		assertEquals(lista4.last(),n5);
+		lista4.gehituAmaieran(n4);
+		assertEquals(lista4.last(),n5);
+		lista4.gehituAmaieran(n5);
+		assertEquals(lista4.last(),n5);
 	}
-
-	@Test
-	public void testIterator() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testAdabegiakInprimatu() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
-	}
-
 }
