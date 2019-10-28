@@ -14,10 +14,11 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 		}
 		else {
 			lag=first;
-			while(konp.compareTo(lag.data)<1&&lag.next!=null) {
+			while(konp.compareTo(lag.data)<0&&lag.next!=null) {
 				lag=lag.next;
 			}
 			berria.prev=lag;
+			lag.next=berria;
 			if(lag.next!=null) {
 				berria.next=lag.prev;	
 			}
