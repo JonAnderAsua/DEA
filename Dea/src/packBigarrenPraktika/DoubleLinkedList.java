@@ -151,8 +151,11 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 				badago=lag.data.equals(elem);
 			}
 		}
-		emaitza=lag.data;
-		return emaitza;
+		if(!badago) {return null;}
+		else {
+			emaitza=lag.data;
+			return emaitza;
+		}
 	}
 	
 	//Kostua = n da, kasurik txarrenean zerrenda osoa zeharkatu behar duelako. n: Nodo kopurua

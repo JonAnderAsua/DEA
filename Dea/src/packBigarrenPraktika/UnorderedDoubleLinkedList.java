@@ -13,7 +13,7 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 		else {
 			lag.next=first;
 			lag.prev=first.prev;
-			first.prev.next=lag;
+			//first.prev.next=lag;
 			first.prev=lag;
 			first=lag;
 		}
@@ -26,15 +26,18 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 	// bukaeran gehitu
 		// KODEA OSATU ETA KOSTUA KALKULATU
 		Node berria=new Node(elem);
+		Node lag;
 		if(isEmpty()) {
 			first=berria;
 			first.prev=first.next=null;
 		}
 		else {
-			first.prev.next=berria;
-			berria.prev=first.prev;
-			first.prev=berria;
-			berria.next=first;
+			lag=first;
+			while (lag.next!=null) {
+				lag=lag.next;
+			}
+			lag.next=berria;
+			berria.prev=lag;
 		}
 		count++;
 	}

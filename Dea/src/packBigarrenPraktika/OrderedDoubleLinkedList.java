@@ -11,7 +11,7 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 		Comparable<T>konp=(Comparable<T>)elem;
 		if(isEmpty()) {
 			lag=first;
-			lag.prev=lag.next=null;
+	//		lag.prev=lag.next=null;
 		}
 		else {
 			lag=first;
