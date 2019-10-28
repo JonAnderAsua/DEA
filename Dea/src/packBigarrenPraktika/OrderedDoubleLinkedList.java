@@ -5,13 +5,12 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 	public void add(T elem){
 		//Aurre:
 		//Post: Zerrendan emandako elementua bere posizioan txertatzen du
-		// KODEA OSATU ETA KOSTUA KALKULATU
 		Node<T> lag;
 		Node<T> berria=new Node(elem);
 		Comparable<T>konp=(Comparable<T>)elem;
 		if(isEmpty()) {
-			lag=first;
-	//		lag.prev=lag.next=null;
+			first=berria;
+			berria.prev=berria.next=berria;
 		}
 		else {
 			lag=first;
@@ -25,9 +24,9 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 			lag.next.prev=berria;
 			lag.next=berria;
 		}
-
-
 	}
+	
+	//Kostua = n, kasurik txarrenean lista osoa errekorritu behar duzulako 
 
 	public void merge(DoubleLinkedList<T> zerrenda){
 		// KODEA OSATU ETA KOSTUA KALKULATU
@@ -44,6 +43,4 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 			add(berria.data);
 		}
 	}
-
-
 }
