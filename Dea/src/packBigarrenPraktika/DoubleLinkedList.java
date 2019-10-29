@@ -176,9 +176,9 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	{ return count;};
 	
 	public Node<T> posizioanLortu(Integer pPosizioa){
-		Node<T> emaitza=null;
+		Node<T> emaitza;
 		int i=pPosizioa;
-		if(!isEmpty()) {
+		if(!isEmpty()&&pPosizioa<=this.size()){
 			emaitza=first;
 			while(i>=0&&emaitza.next!=first){
 				emaitza=emaitza.next;
