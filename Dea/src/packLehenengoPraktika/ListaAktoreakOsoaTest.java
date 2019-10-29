@@ -1,4 +1,4 @@
-package packProbak;
+package packLehenengoPraktika;
 
 import static org.junit.Assert.*;
 import packDEA.Pelikula;

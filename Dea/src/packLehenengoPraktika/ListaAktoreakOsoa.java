@@ -1,4 +1,4 @@
-package packDEA;
+package packLehenengoPraktika;
 import java.util.Scanner;
 import java.util.SortedSet;
 import java.util.TreeSet;

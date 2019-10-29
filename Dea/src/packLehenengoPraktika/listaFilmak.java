@@ -1,29 +1,52 @@
-package packDEA;
+package packLehenengoPraktika;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
+import packBigarrenPraktika.Node;
 
 public class listaFilmak {
-	private ArrayList<Pelikula> lista;
+	private Node<Pelikula> first;
+	private int count=0;
 	
 	
 	public listaFilmak(){
-		this.lista=new ArrayList<Pelikula>();
-	}
-	
-	
-	public boolean badago(Pelikula pPelikula) {
-		//Aurre:
-		//Post: Zerrendan Pelikula dagoen ala ez adierazten du, badago true bueltatzen du, bestela false
-		return this.lista.contains(pPelikula);
+		this.first=null;
 	}
 	
 	public void pelikulaGehitu(Pelikula pPelikula) {
 		//Aurre:
-		//Post: Pelikula ez badago zerrendan gehitzen du
-		if(!this.lista.contains(pPelikula)) {
-			lista.add(pPelikula);
+		//Post: Pelikula ez badago zerrendan HASIERAN gehitzen du
+		if(isEmpty()) {
+			Node<Pelikula>berria=new Node(pPelikula);
+			first=berria;
+			berria.prev=berria.next=berria;
 		}
+		else{
+			if(!contains(pPelikula)) {
+				Node<Pelikula>berria=new Node(pPelikula);
+				berria.next=first;
+				berria.prev=first.prev;
+				first.prev.next=berria;
+				first.prev=berria;
+				berria=first;
+			}
+		}
+	}
+	
+	public boolean contains(Pelikula pPelikula) {
+		boolean badago=false;
+		Node<Pelikula> lag;
+		int i=count;
+		if(!isEmpty()) {
+			badago=first.data.equals(pPelikula);
+			lag=first.next;
+			while(i>=0&&!badago) {
+				lag=lag.next;
+				badago=lag.data.equals(pPelikula);
+			}
+		}
+		return badago;
+	}
+	
+	public boolean isEmpty() {
+		return this.first.equals(null);
 	}
 }

@@ -1,4 +1,4 @@
-package packDEA;
+package packLehenengoPraktika;
 
 public class Aktorea {
 	private String izenAbizena;
