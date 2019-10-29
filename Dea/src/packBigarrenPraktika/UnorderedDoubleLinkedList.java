@@ -51,17 +51,17 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 		else {
 			Node berria=new Node(elem);
 			Node lag;
-			if(!isEmpty()) {
-				lag=first;
-				while(!lag.data.equals(target)) {
-					lag=lag.next;
-				}	
-				berria.prev=lag;
-				berria.next=lag.next;
-				lag.next.prev=berria;
-				lag.next=berria;
-			}
+			lag=first;
+			while(!lag.data.equals(target)) {
+				lag=lag.next;
+			}	
+			berria.prev=lag;
+			berria.next=lag.next;
+			lag.next.prev=berria;
+			lag.next=berria;
+			count++;
 		}
 	}
 	//Kostua n (elementu kopurua) da kasurik txarrenean zerrendako nodo guztiak zeharkatu behar direlako
 }
+	

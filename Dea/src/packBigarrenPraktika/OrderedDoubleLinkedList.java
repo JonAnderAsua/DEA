@@ -24,6 +24,7 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 				lag.next=berria;
 			}
 		}
+		count++;
 	}	
 	
 	//Kostua = n, kasurik txarrenean lista osoa errekorritu behar duzulako 
@@ -54,5 +55,6 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 				}
 			}
 		}
+		count=count+zerrenda.size();
 	}
 }
