@@ -53,7 +53,7 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 			Node lag;
 			if(!isEmpty()) {
 				lag=first;
-				while(lag.next!=null&&!lag.data.equals(target)) {
+				while(lag.next!=first&&!lag.data.equals(target)) {
 					lag=lag.next;
 				}	
 				berria.prev=lag;
