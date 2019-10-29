@@ -10,7 +10,7 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 		Comparable<T>konp=(Comparable<T>)elem;
 		if(isEmpty()) {
 			first=berria;
-			berria.prev=berria.next=berria;
+			first.prev=first.next=first;
 		}
 		else {
 			lag=first;
@@ -30,15 +30,17 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 		// KODEA OSATU ETA KOSTUA KALKULATU
 		Node<T>berria;
 		Comparable<T>lehenengoa=(Comparable<T>)first;
-		if(lehenengoa.compareTo(zerrenda.first())<1){ //Sartutako listaren datuak dauden datuak baino handiago badira
+		if(!zerrenda.isEmpty()) {
+			if(lehenengoa.compareTo(zerrenda.first())<1||isEmpty()){ 
+				for(int i=0;i<=zerrenda.size();i++) {
+					berria=zerrenda.posizioanLortu(i);
+					gehituAmaieran(berria);
+				}
+			}
 			for(int i=0;i<=zerrenda.size();i++) {
 				berria=zerrenda.posizioanLortu(i);
-				gehituAmaieran(berria);
+				add(berria.data);
 			}
-		}
-		for(int i=0;i<=zerrenda.size();i++) {
-			berria=zerrenda.posizioanLortu(i);
-			add(berria.data);
 		}
 	}
 }
