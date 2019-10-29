@@ -169,8 +169,20 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	public boolean isEmpty() 
 	{ return first == null;};
 	
-	public int size() 
-	{ return count;};
+	public int size(){ 
+		Node<T>lag;
+		if(isEmpty()) {
+			count=0;
+		}
+		else {
+			lag=first;
+			while(lag.next!=first) {
+				lag=lag.next;
+				count++;
+			}
+		}
+		return count;
+	}
 	
 	public Node<T> posizioanLortu(Integer pPosizioa){
 		Node<T> emaitza=null;
