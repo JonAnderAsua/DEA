@@ -262,6 +262,4 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			}	
 			return "SimpleLinkedList " + result + "]";
 		}
-
-		
 }
