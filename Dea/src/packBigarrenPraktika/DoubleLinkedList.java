@@ -51,11 +51,12 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		// KODEA OSATU ETA KOSTUA KALKULATU
 		T emaitza=null;
 		if(!isEmpty()) { //Nahiz eta aurrebaldintzan kasu hau agertuko ez dela esan tratatuko dugu
-			if(first.prev==first) {
+			if(this.size()==1) {
 				emaitza=first.data;
 				removeFirst();
 			}
 			else {
+				emaitza=first.prev.data;
 				first.prev=first.prev.prev;
 				first.prev.next=first;
 			}
@@ -70,7 +71,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	// Balio hori listan baldin badago, bere lehen agerpena ezabatuko dut. Kendutako objektuaren erreferentzia 
         //  bueltatuko du (null ez baldin badago)
 		// KODEA OSATU ETA KOSTUA KALKULATU
-		Node<T> lag=null;
+		Node<T> lag;
 		boolean topatuta=false;
 		T emaitza=null;
 		int i=count;
@@ -87,16 +88,14 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 					i--;
 				}
 				if(topatuta && i<0){//Elementua azkena bada
-					lag.prev.next=first;
-					first.prev=lag.prev;
-					count --;
+					removeLast();
 				}
 				else{
 					if(topatuta){ //erdialdean badago 
-					emaitza=lag.data;
-					lag.next.prev=lag.prev;
-					lag.prev.next=lag.next;
-					count--;
+						emaitza=lag.data;
+						lag.next.prev=lag.prev;
+						lag.prev.next=lag.next;
+						count--;	
 					}	
 				}
 			}
@@ -145,7 +144,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		// KODEA OSATU ETA KOSTUA KALKULATU
 		boolean badago=false;
 		Node<T> lag;
-		T emaitza;
+		T emaitza=null;
 		int i=count;
 		if(!isEmpty()){
 			badago=first.data.equals(elem);
@@ -154,12 +153,10 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 				lag=lag.next;
 				badago=lag.data.equals(elem);
 			}
-			if(!badago) {return null;}
-			else {
-				emaitza=lag.data;
-				return emaitza;
-			
-			}
+			emaitza=lag.data;
+		}
+		if(badago) {
+			return emaitza;
 		}
 		else {
 			return null;
@@ -176,7 +173,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	{ return count;};
 	
 	public Node<T> posizioanLortu(Integer pPosizioa){
-		Node<T> emaitza;
+		Node<T> emaitza=null;
 		int i=pPosizioa;
 		if(!isEmpty()&&pPosizioa<=this.size()){
 			emaitza=first;
@@ -198,6 +195,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			pNodoa.next=first;
 			first.prev.next=pNodoa;
 			first.prev=pNodoa;
+			count++;
 		}
 	}
 	
