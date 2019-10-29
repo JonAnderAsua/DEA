@@ -206,10 +206,16 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	//Aurre:
 	//Post: Nodoa zerrendan ez badago amaieran gehitzen du
 		if(!isEmpty()) {
-			pNodoa.prev=first.prev;
-			pNodoa.next=first;
-			first.prev.next=pNodoa;
-			first.prev=pNodoa;
+			if(!contains(pNodoa.data)) {
+				pNodoa.prev=first.prev;
+				pNodoa.next=first;
+				first.prev.next=pNodoa;
+				first.prev=pNodoa;
+			}
+		}
+		else {
+			first=pNodoa;
+			first.prev=first.next=first;
 		}
 	}
 	
