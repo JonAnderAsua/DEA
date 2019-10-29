@@ -1,4 +1,4 @@
-package packDEA;
+package packLehenengoPraktika;
 
 import java.util.ArrayList;
 import java.util.Collections;
