@@ -32,13 +32,12 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 			first.prev=first.next=null;
 		}
 		else {
-			lag=first;
-			while (lag.next!=null) {
-				lag=lag.next;
-			}
-			lag.next=berria;
-			berria.prev=lag;
+			berria.prev=first.prev;
+			berria.next=first;
+			//first.prev.next=berria;
+			first.prev=berria;
 		}
+		
 		count++;
 	}
 	
