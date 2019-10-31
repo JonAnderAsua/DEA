@@ -73,7 +73,6 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		Node<T> lag=null;
 		boolean topatuta=false;
 		T emaitza=null;
-		int i=count;
 		if(!isEmpty()){//Nahiz eta aurrebaldintzan kasu hau agertuko ez dela esan tratatuko dugu
 			if(first.data.equals(elem)){//Elementua lehenengoa da
 				emaitza=first.data;
@@ -81,12 +80,11 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			}
 			else {
 				lag=first;
-				while(i>=0 &&!topatuta) {
+				while(lag.next!=first &&!topatuta) {
 					lag=lag.next;
 					topatuta=lag.data.equals(elem);
-					i--;
 				}
-				if(topatuta && i<0){//Elementua azkena bada
+				if(topatuta && lag.next==first){//Elementua azkena bada
 					lag.prev.next=first;
 					first.prev=lag.prev;
 					count --;
