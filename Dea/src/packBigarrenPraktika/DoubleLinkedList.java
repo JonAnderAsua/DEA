@@ -146,11 +146,10 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		boolean badago=false;
 		Node<T> lag;
 		T emaitza;
-		int i=count;
 		if(!isEmpty()){
 			badago=first.data.equals(elem);
 			lag=first;
-			while(i>=0 &&!badago) {
+			while(lag.next!=first &&!badago) {
 				lag=lag.next;
 				badago=lag.data.equals(elem);
 			}
