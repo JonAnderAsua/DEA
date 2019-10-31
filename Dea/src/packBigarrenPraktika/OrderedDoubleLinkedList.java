@@ -10,7 +10,7 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 		Comparable<T>konp=(Comparable<T>)elem;
 		if(isEmpty()) {
 			first=berria;
-			berria.prev=berria.next=berria;
+			first.prev=first.next=first;
 		}
 		else {
 			if(!this.contains(elem)) {
@@ -34,7 +34,7 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 		Node<T>berria;
 		Comparable<T>azkena=(Comparable<T>)last();
 		if(isEmpty()) {
-			for(int i=0;i<=zerrenda.size();i++){
+			for(int i=0;i<=zerrenda.size();i++) {
 				berria=zerrenda.posizioanLortu(i);
 				this.gehituAmaieran(berria);
 			}	
@@ -55,6 +55,6 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 				}
 			}
 		}
-		count=count+zerrenda.size();
+
 	}
 }

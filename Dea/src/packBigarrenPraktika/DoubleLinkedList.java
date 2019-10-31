@@ -168,8 +168,8 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 
 	public boolean isEmpty() 
 	{ return first == null;};
-	
-	public int size(){ 
+
+	public int size() { 
 		Node<T>lag;
 		if(isEmpty()) {
 			count=0;
@@ -215,8 +215,9 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			first=pNodoa;
 			first.prev=first.next=pNodoa;
 			count++;
+
+			}
 		}
-	}
 	
 	/** Return an iterator to the stack that iterates through the items . */ 
 	   public Iterator<T> iterator() { return new ListIterator(); } 
