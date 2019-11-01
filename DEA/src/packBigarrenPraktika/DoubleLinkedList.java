@@ -81,10 +81,8 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			else {
 				lag=first.next;
 				while(lag!=first && !topatuta) {
-					lag=lag.next; //Manda a un null 
-					if(lag.data.equals(elem)) {
-						topatuta=true;
-					}
+					lag=lag.next;
+					topatuta=lag.data.equals(elem);
 				}
 				if(topatuta) {
 					emaitza=lag.data;
@@ -174,6 +172,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 				emaitza++;
 			}
 		}
+		System.out.println(emaitza);
 		return emaitza;
 	}
 	
@@ -219,6 +218,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		   private int indizea=0;
 
 	       public boolean hasNext(){ 
+	    	   System.out.println(size());
 	    	   return indizea < size(); 
 	       }
 

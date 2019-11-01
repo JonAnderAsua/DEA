@@ -30,6 +30,7 @@ public class ProbaDoubleLinkedList {
 		
 		System.out.print(" Lista ...............");
 		visualizarNodos(l);
+		System.out.println("egiten du");
 		System.out.println("Elementu-kopurua: " + l.size());
 				
 		
