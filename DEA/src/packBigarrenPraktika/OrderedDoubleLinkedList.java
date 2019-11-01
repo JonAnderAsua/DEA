@@ -14,7 +14,7 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 		}
 		else {
 			lag=first;
-			while(konp.compareTo(lag.data)<0&&lag.next!=first) {
+			while(konp.compareTo(lag.data)>=0&&lag.next!=first) {
 				lag=lag.next;
 			}
 			berria.prev=lag;
@@ -28,18 +28,25 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 
 	public void merge(DoubleLinkedList<T> zerrenda){
 		// KODEA OSATU ETA KOSTUA KALKULATU
-		Node<T>berria;
+		Node<T>lag;
 		Comparable<T>lehenengoa=(Comparable<T>)first;
 		if(!zerrenda.isEmpty()) {
 			if(lehenengoa.compareTo(zerrenda.first())<1||isEmpty()){ 
-				for(int i=0;i<=zerrenda.size();i++) {
-					berria=zerrenda.posizioanLortu(i);
-					gehituAmaieran(berria);
+				for(int i=0;i<zerrenda.size();i++) {
+					gehituAmaieran(zerrenda.posizioanLortu(i-1));
 				}
 			}
-			for(int i=0;i<=zerrenda.size();i++) {
-				berria=zerrenda.posizioanLortu(i);
-				add(berria.data);
+			for(int i=0;i<zerrenda.size();i++) {
+				Node<T> berria=zerrenda.posizioanLortu(i-1);
+				lag=first.next;
+				Comparable<T> berriaKomp=(Comparable<T>)berria;
+				while(berriaKomp.compareTo(lag.data)>0 && lag!=first) {
+					lag=lag.next;
+				}
+				berria.prev=lag.prev;
+				berria.next=lag;
+				lag.prev.next=berria;
+				lag.prev=berria;
 			}
 		}
 	}

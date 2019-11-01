@@ -35,8 +35,9 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 				first=null;
 			}
 			else {
+				first.prev.next=first.next;
+				first.next.prev=first.prev;
 				first=first.next;
-				
 			}
 			count--;
 		}
@@ -51,7 +52,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		// KODEA OSATU ETA KOSTUA KALKULATU
 		T emaitza=null;
 		if(!isEmpty()) { //Nahiz eta aurrebaldintzan kasu hau agertuko ez dela esan tratatuko dugu
-			if(first.prev==first) {
+			if(first.prev.equals(first)) {
 				emaitza=first.data;
 				removeFirst();
 			}
@@ -178,11 +179,12 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	
 	public Node<T> posizioanLortu(Integer pPosizioa){
 		Node<T> emaitza=null;
-		int i=pPosizioa;
+		int i=pPosizioa-1;
 		if(!isEmpty()) {
 			emaitza=first;
-			while(i>=0&&emaitza.next!=first){
+			while(i>0&&emaitza.next!=first){
 				emaitza=emaitza.next;
+				i--;
 			}
 			if(emaitza.next==first) {
 				emaitza=null;

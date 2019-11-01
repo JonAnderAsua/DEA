@@ -1,2 +1,2 @@
-module DEA {
+module Dea {
 }
