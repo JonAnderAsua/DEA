@@ -70,7 +70,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	// Balio hori listan baldin badago, bere lehen agerpena ezabatuko dut. Kendutako objektuaren erreferentzia 
         //  bueltatuko du (null ez baldin badago)
 		// KODEA OSATU ETA KOSTUA KALKULATU
-		Node<T> lag=null;
+		Node<T> lag;
 		boolean topatuta=false;
 		T emaitza=null;
 		if(!isEmpty()){//Nahiz eta aurrebaldintzan kasu hau agertuko ez dela esan tratatuko dugu
@@ -79,28 +79,24 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 				removeFirst();
 			}
 			else {
-				lag=first;
-				while(lag.next!=first &&!topatuta) {
-					lag=lag.next;
-					topatuta=lag.data.equals(elem);
+				lag=first.next;
+				while(lag!=first && !topatuta) {
+					lag=lag.next; //Manda a un null 
+					if(lag.data.equals(elem)) {
+						topatuta=true;
+					}
 				}
-				if(topatuta && lag.next==first){//Elementua azkena bada
-					lag.prev.next=first;
-					first.prev=lag.prev;
-					count --;
-				}
-				else{
-					if(topatuta){ //erdialdean badago 
+				if(topatuta) {
 					emaitza=lag.data;
-					lag.next.prev=lag.prev;
-					lag.prev.next=lag.next;
-					count--;
-					}	
+					lag.prev.prev.next=lag;
+					lag.prev=lag.prev.prev;
+					count --;	
 				}
 			}
 		}
 		return emaitza;
-     }
+	}
+     
 
 	//Kostua = n da, kasurik txarrenean zerrenda osoa zeharkatu behar duelako	
 	
@@ -124,11 +120,10 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	// KODEA OSATU ETA KOSTUA KALKULATU
 		boolean badago=false;
 		Node<T> lag;
-		int i=count;
 		if(!isEmpty()) {
 			badago=first.data.equals(elem);
 			lag=first.next;
-			while(i>=0&&!badago) {
+			while(lag!=first&&!badago) {
 				lag=lag.next;
 				badago=lag.data.equals(elem);
 			}
@@ -146,8 +141,8 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		T emaitza;
 		if(!isEmpty()){
 			badago=first.data.equals(elem);
-			lag=first;
-			while(lag.next!=first &&!badago) {
+			lag=first.next;
+			while(lag!=first &&!badago) {
 				lag=lag.next;
 				badago=lag.data.equals(elem);
 			}
@@ -171,17 +166,15 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	
 	public int size() { 
 		Node<T>lag;
-		if(isEmpty()) {
-			count=0;
-		}
-		else {
+		int emaitza=0;
+		if(!isEmpty()) {
 			lag=first;
 			while(lag.next!=first) {
 				lag=lag.next;
-				count++;
+				emaitza++;
 			}
 		}
-		return count;
+		return emaitza;
 	}
 	
 	public Node<T> posizioanLortu(Integer pPosizioa){
@@ -222,24 +215,24 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	   // an iterator, doesn't implement remove() since it's optional 
 	   private class ListIterator implements Iterator<T> { 
 		// KODEA OSATU 
-		   private Node<T> current=first;
-		   private int index=0;
+		   private Node<T> oraingoa=first;
+		   private int indizea=0;
 
 	       public boolean hasNext(){ 
-	    	   return index < count; 
+	    	   return indizea < size(); 
 	       }
 
 	       public T next() {
-	    	   T tmp=null;
+	    	   T emaitza=null;
 	    	   if (!hasNext()){
 	    		   throw new NoSuchElementException();
 	    	   }
 	    	   else {
-	    		   tmp=current.data;
-	    		   current = current.next;
-	    		   index++;
+	    		  emaitza=oraingoa.data;
+	    		  oraingoa=oraingoa.next;
+	    		  indizea++;
 	    	   }
-	    	   return tmp;
+	    	   return emaitza;
 	        }
 
 	   } // private class

@@ -8,12 +8,12 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 		Node lag=new Node(elem);
 		if(isEmpty()){ //Lista hutsa bada
 			first=lag;
-			first.prev=first.next=first;
+			first.prev=first.next=lag;
 		}
 		else {
 			lag.next=first;
 			lag.prev=first.prev;
-			//first.prev.next=lag;
+			first.prev.next=lag;
 			first.prev=lag;
 			first=lag;
 		}
@@ -26,22 +26,22 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 	// bukaeran gehitu
 		// KODEA OSATU ETA KOSTUA KALKULATU
 		Node berria=new Node(elem);
-		Node lag;
 		if(isEmpty()) {
 			first=berria;
-			first.prev=first.next=null;
+			first.prev=first.next=berria;
 		}
 		else {
 			berria.prev=first.prev;
 			berria.next=first;
-			//first.prev.next=berria;
 			first.prev=berria;
+			first.prev.next=berria;
 		}
 		
 		count++;
 	}
 	
-	//Zerrendako elementu guztiak zeharkatu behar dituenez, kostua = n da, n elementu kopurua 
+	//Kostua konstantea da, bakarrik first eta bere aurreko elementua atzitzen dituelako
+
 	
 	public void addAfter(T elem, T target) {
 		// KODEA OSATU ETA KOSTUA KALKULATU (AUKERAZKOA)
